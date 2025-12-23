@@ -1,0 +1,14 @@
+{
+  "pages": [
+    {
+      "name": "login",
+      "title": "Вхід",
+      "content": "<div class='glass'><h2>Secure Login</h2><button id='login-submit'>Biometric Scan</button></div>"
+    },
+    {
+      "name": "contact",
+      "title": "Контакти",
+      "content": "<h1>Зв'язок</h1><p>GitHub: ivas-andre</p>"
+    }
+  ]
+}

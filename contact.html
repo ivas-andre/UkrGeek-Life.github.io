@@ -1,108 +1,94 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="uk">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Terminal | Establish Connection</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styles.css">
-    
-    <style>
-        body { background-color: #010409; color: #22c55e; font-family: 'Courier New', monospace; }
-        .terminal-window {
-            background: #0d1117; border: 1px solid #30363d; border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8); margin-top: 40px; overflow: hidden;
-        }
-        .terminal-header {
-            background: #161b22; padding: 12px; display: flex; align-items: center;
-            border-bottom: 1px solid #30363d;
-        }
-        .btn-circle { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; margin-right: 8px; border: none; }
-        .btn-red { background: #ff5f56; } .btn-yellow { background: #ffbd2e; } .btn-green { background: #27c93f; }
-        .terminal-body { padding: 25px; min-height: 500px; }
-        #map { height: 250px; width: 100%; border-radius: 4px; border: 1px solid #22c55e; margin-top: 15px; }
-        .prompt { color: #58a6ff; font-weight: bold; }
-        .terminal-input { background: transparent; border: none; color: #fff; outline: none; width: 80%; }
-        .api-status { font-size: 10px; color: #8b949e; float: right; }
-    </style>
-</head>
-<body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
-                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="./index.html" style="color: #22c55e; font-weight:bold;">UKR GEEK LIFE</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-main">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="./index.html"><i class="fa fa-home"></i> Головна</a></li>
-                    <li><a href="./about.html"><i class="fa fa-user"></i> Про Мене</a></li>
-                    <li><a href="./projects.html"><i class="fa fa-code"></i> Проєкти</a></li>
-                    <li><a href="./motivation.html"><i class="fa fa-bolt"></i> Мотивація</a></li>
-                    <li class="active"><a href="./contact.html"><i class="fa fa-envelope"></i> Контакти</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="terminal-window">
-                    <div class="terminal-header">
-                        <div class="btn-circle btn-red" onclick="window.location.href='./index.html'"></div>
-                        <div class="btn-circle btn-yellow"></div>
-                        <div class="btn-circle btn-green" onclick="document.documentElement.requestFullscreen()"></div>
-                        <span style="color: #8b949e; font-size: 12px; margin-left: 10px;">session: andrii@kyiv-hq</span>
-                        <span class="api-status">API: GoogleMaps_v3.Active</span>
-                    </div>
-                    <div class="terminal-body">
-                        <p><span class="prompt">root@system:~$</span> get --contacts --active</p>
-                        
-                        <div style="margin: 20px 0;">
-                            <p><i class="fa fa-linkedin" style="color:#0a66c2;"></i> LinkedIn: <a href="https://linkedin.com/in/ivas-andre" target="_blank" style="color: #58a6ff;">linkedin.com/in/ivas-andre</a></p>
-                            <p><i class="fa fa-envelope" style="color:#f0883e;"></i> Email: <span style="color:#fff;">ivas_andre@live.com</span></p>
-                            <p><i class="fa fa-github"></i> GitHub: <a href="https://github.com/ivas-andre" target="_blank" style="color: #58a6ff;">github.com/ivas-andre</a></p>
-                        </div>
-
-                        <p><span class="prompt">root@system:~$</span> load --map --location="Kyiv, Ukraine"</p>
-                        <div id="map"></div>
-
-                        <div style="margin-top: 25px;">
-                            <span class="prompt">>> query_bot:</span>
-                            <input type="text" id="terminal-input" class="terminal-input" placeholder="Type command (e.g. 'help')..." autofocus>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-center" style="margin-top: 15px; color: #484f58; font-size: 10px;">
-                    [cite: 2025-12-23] Anti-Aggressor Shield ACTIVE. No Russian characters allowed.
-                </p>
-            </div>
-        </div>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Контакти
+  </title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="./css/styles.css" rel="stylesheet"/>
+ </head>
+ <body class="futuristic-dark">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+   <div class="container">
+    <div class="navbar-header">
+     <button class="navbar-toggle collapsed" data-target="#navbar-main" data-toggle="collapse" type="button">
+      <span class="icon-bar">
+      </span>
+      <span class="icon-bar">
+      </span>
+      <span class="icon-bar">
+      </span>
+     </button>
+     <a class="navbar-brand" href="./index.html" style="color: #22c55e; font-weight:bold;">
+      UKR GEEK LIFE
+     </a>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap"></script>
-    
-    <script src="./js/scripts.js"></script>
-    
-    <script>
-        // Проста ініціалізація карти (Kyiv HQ)
-        function initMap() {
-            const kyiv = { lat: 50.4501, lng: 30.5234 };
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 12,
-                center: kyiv,
-                styles: [ { "stylers": [ { "invert_lightness": true }, { "hue": "#00ff6a" }, { "saturation": -80 } ] } ] 
-            });
-            new google.maps.Marker({ position: kyiv, map: map, title: "HQ" });
-        }
-    </script>
-</body>
+    <div class="collapse navbar-collapse" id="navbar-main">
+     <ul class="nav navbar-nav navbar-right">
+      <li>
+       <a href="./index.html">
+        <i class="fa fa-home">
+        </i>
+        Головна
+       </a>
+      </li>
+      <li>
+       <a href="./about.html">
+        <i class="fa fa-user">
+        </i>
+        Про Мене
+       </a>
+      </li>
+      <li>
+       <a href="./projects.html">
+        <i class="fa fa-code">
+        </i>
+        Проєкти
+       </a>
+      </li>
+      <li>
+       <a href="./motivation.html">
+        <i class="fa fa-bolt">
+        </i>
+        Мотивація
+       </a>
+      </li>
+      <li>
+       <a href="./contact.html">
+        <i class="fa fa-envelope">
+        </i>
+        Контакти
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </nav>
+  <div class="container" style="margin-top: 100px; min-height: 80vh;">
+   <div class="geek-card animated fadeIn">
+    <h1 class="text-success">
+     Головна | UkrGeek-Life
+    </h1>
+    <hr style="border-color: #22c55e;"/>
+    <p>
+     Контент для розділу "index" у розробці...
+    </p>
+   </div>
+  </div>
+  <footer class="text-center" style="padding: 20px; color: #64748b;">
+   <p>
+    © 2025 UkrGeek-Life. Слава Україні! 🇺🇦
+   </p>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+  </script>
+  <script src="./js/scripts.js">
+  </script>
+ </body>
 </html>
