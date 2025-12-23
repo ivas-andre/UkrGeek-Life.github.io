@@ -1,14 +1,15 @@
+# -*- coding: utf-8 -*-
 import os
-
-# --- НАЛАШТУВАННЯ UTF-8 ДЛЯ КОНСОЛІ WINDOWS ---
 import sys
-# Примушуємо Python писати в консоль UTF-8, щоб не було помилок при print()
+
+# 1. FORCING UTF-8 ENVIRONMENT
+# Це змушує Python ігнорувати системне кодування Windows і використовувати UTF-8
 sys.stdout.reconfigure(encoding='utf-8')
 
-# --- КОНФІГУРАЦІЯ ---
+# 2. IDENTITY CONFIGURATION (Тут твоє ім'я)
 IDENTITY = "UkrGeekLife | Андрій Івась"
 
-# МЕНЮ (Перевіряємо, щоб лінки вели на існуючі файли)
+# 3. HTML TEMPLATES
 NAV_MENU = """
 <nav role="navigation" aria-label="Головне меню" class="main-nav">
     <a href="index.html" class="nav-link">[ ГОЛОВНА ]</a>
@@ -18,12 +19,10 @@ NAV_MENU = """
 </nav>
 """
 
-# ШАБЛОН (Зверни увагу на meta charset="UTF-8")
 BASE_TEMPLATE = """<!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -40,19 +39,14 @@ BASE_TEMPLATE = """<!DOCTYPE html>
 </body>
 </html>"""
 
-# КОНТЕНТ СТОРІНОК
 PAGES = {
     "index.html": {
         "title": f"Головна | {IDENTITY}",
-        "content": "<h1>Система UkrGeekLife</h1><p>Ідентичність підтверджено.</p><p>Статус: Онлайн.</p>"
+        "content": "<h1>System Online</h1><p>Welcome to UkrGeekLife.</p>"
     },
     "about.html": {
         "title": f"Про Мене | {IDENTITY}",
-        "content": "<h1>Андрій Івась</h1><p>IT-фахівець. Патріот. Архітектор автоматизації.</p>"
-    },
-    "projects.html": {
-        "title": f"Проєкти | {IDENTITY}",
-        "content": "<h1>Арсенал</h1><ul><li>Автоматизація PowerShell</li><li>Python Backend</li><li>Web Security</li></ul>"
+        "content": "<h1>Identity Verification</h1><p>Андрій Івась. Engineer.</p>"
     },
     "contact.html": {
         "title": f"Термінал | {IDENTITY}",
@@ -60,56 +54,44 @@ PAGES = {
     }
 }
 
-def update_system():
-    print(f"--- ПОЧАТОК ГЕНЕРАЦІЇ: {IDENTITY} ---")
+def generate():
+    print(f"--- GENERATING SITE: {IDENTITY} ---")
     
     for filename, data in PAGES.items():
-        # ЛОГІКА ТЕРМІНАЛУ
         if data.get("is_terminal"):
-            html_content = f"""<!DOCTYPE html>
+            # Окрема структура для терміналу
+            html = f"""<!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{data['title']}</title>
     <link rel="stylesheet" href="css/style.css">
     <style>body {{ overflow: hidden; }}</style>
 </head>
 <body>
     <div class="matrix-bg"></div>
-    <header>
-        <div class="logo">{IDENTITY}</div>
-        {NAV_MENU}
-    </header>
+    <header><div class="logo">{IDENTITY}</div>{NAV_MENU}</header>
     <div class="terminal-wrapper">
-        <div id="history">
-            <p>UkrGeekLife OS v2.0 initialized...</p>
-            <p>Type 'help' for commands.</p>
-        </div>
-        <div class="input-line">
-            <span class="prompt">guest@ukrgeek:~$</span>
-            <input type="text" id="cmd" autofocus>
-        </div>
+        <div id="history"><p>UkrGeekLife OS v2.0</p></div>
+        <div class="input-line"><span class="prompt">guest@ukrgeek:~$</span><input type="text" id="cmd" autofocus></div>
     </div>
     <script src="js/matrix.js"></script>
     <script src="js/terminal.js"></script>
 </body>
 </html>"""
         else:
-            # ЗВИЧАЙНА СТОРІНКА
-            html_content = BASE_TEMPLATE.format(
+            html = BASE_TEMPLATE.format(
                 title=data['title'],
                 logo=IDENTITY,
                 nav=NAV_MENU,
                 content=data['content']
             )
 
-        # !!! ГОЛОВНИЙ ФІКС: encoding="utf-8" !!!
-        # Це змушує Python записувати файл саме в UTF-8, а не в кодуванні Windows.
+        # 4. WRITING FILE (The Fix)
+        # encoding="utf-8" вирішує проблему кракозябрів назавжди.
         with open(filename, "w", encoding="utf-8") as f:
-            f.write(html_content)
-        
-        print(f"✅ Згенеровано (UTF-8): {filename}")
+            f.write(html)
+        print(f"✅ Saved: {filename}")
 
 if __name__ == "__main__":
-    update_system()
+    generate()
