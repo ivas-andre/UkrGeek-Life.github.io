@@ -3,64 +3,48 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UkrGeekLife | Andrii Ivas</title>
+    <title>UkrGeek-Life | Andrii Ivas</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <style>
-        body { font-family: 'Lato', sans-serif; background: #0f172a; color: #f8fafc; }
-        .hero { padding: 100px 0; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-bottom: 3px solid #22c55e; }
-        .geek-card { background: #1e293b; padding: 25px; border-radius: 12px; border: 1px solid #334155; transition: 0.3s; }
-        .geek-card:hover { border-color: #22c55e; transform: translateY(-5px); }
-        .btn-success { background-color: #22c55e; border: none; border-radius: 20px; font-weight: bold; }
-        footer { padding: 40px 0; background: #020617; border-top: 1px solid #334155; color: #64748b; }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-static-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#" style="color: #22c55e;">UKR GEEK LIFE</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#hero" style="color: #22c55e; font-weight: bold;">UKR GEEK LIFE</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+
+        <div class="collapse navbar-collapse" id="main-nav-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#about">Про Мене</a></li>
-                <li><a href="#projects">Проєкти</a></li>
-                <li><a href="#contact">Контакти</a></li>
+                <li><a href="#about"><i class="fa fa-user"></i> Про Мене</a></li>
+                <li><a href="#projects"><i class="fa fa-th-large"></i> Проєкти</a></li>
+                <li><a href="#motivation"><i class="fa fa-bullseye"></i> Мотивація</a></li>
+                <li><a href="#contact"><i class="fa fa-paper-plane"></i> Контакти</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<section class="hero text-center">
-    <div class="container">
-        <h1>Андрій Івась</h1>
-        <p class="lead">System Architect | Automation Enthusiast | Patriot</p>
-        <a href="#projects" class="btn btn-lg btn-success">Мої Проєкти</a>
-    </div>
-</section>
+<div style="height: 50px;"></div>
 
-<div id="about" class="container" style="padding: 80px 0;">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Про Мене</h2>
-            <p>10+ років вегетаріанець. 1 рік без морепродуктів. Використовую ADHD як паливо для створення ідеальних систем. Моя мета — змінити світ через автоматизацію та безпеку.</p>
+    <div style="padding-top: 50px;"></div>
+
+    <section class="hero text-center" style="padding: 100px 20px;">
+        <div class="container">
+            <h1>Системний Менеджмент</h1>
+            <p class="lead">Андрій Івась: Автоматизація, Безпека, UX-дизайн систем.</p>
         </div>
-        <div class="col-md-6">
-            <div class="geek-card text-center">
-                <i class="fa fa-shield fa-4x" style="color: #22c55e;"></i>
-                <h4>Безпека понад усе</h4>
-                <p>Факти, надійність та захист даних.</p>
-            </div>
-        </div>
-    </div>
-</div>
+    </section>
 
-<footer class="text-center">
-    <div class="container">
-        <p>&copy; 2025 UkrGeekLife. Слава Україні! 🇺🇦</p>
-    </div>
-</footer>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>

@@ -82,3 +82,32 @@ $(document).ready(function() {
     closeEffect: 'none'
   });
 });
+
+// UkrGeekLife Modern JS v0.1.2
+const systemConfig = {
+    version: "0.1.2",
+    env: "Production",
+    lastSecurityScan: new Date().toLocaleDateString()
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log(`%c System Online: UkrGeekLife v${systemConfig.version}`, "color: #22c55e; font-weight: bold;");
+
+    // Адаптивне меню: автоматичне закриття після кліку
+    const navLinks = document.querySelectorAll('.navbar-collapse a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const navbar = document.querySelector('.navbar-collapse');
+            if (navbar.classList.contains('in')) {
+                jQuery('.navbar-collapse').collapse('hide');
+            }
+        });
+    });
+
+    // Cyber Security Touch: Логування спроб доступу до консолі
+    window.addEventListener('resize', () => {
+        if (window.outerWidth - window.innerWidth > 100) {
+            console.warn("Security Alert: DevTools activity detected.");
+        }
+    });
+});
