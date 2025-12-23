@@ -1,41 +1,28 @@
-// UkrGeekLife Terminal Logic
+
 const input = document.getElementById("cmd");
 const history = document.getElementById("history");
 
-input.addEventListener("keydown", function(e) {
-    if (e.key === "Enter") {
-        const cmd = input.value.trim().toLowerCase();
-        
-        // Додаємо команду в історію
-        history.innerHTML += `<div><span class="prompt">guest@ukrgeek:~$</span> ${input.value}</div>`;
-        
-        // Відповідь системи
-        let response = "";
-        switch(cmd) {
-            case "help":
-                response = "COMMANDS: [about] [projects] [email] [slava] [clear]";
-                break;
-            case "email":
-                response = "CONTACT: <a href='mailto:me@ukrgeek.life' style='color:#FFF'>me@ukrgeek.life</a>";
-                break;
-            case "slava":
-                response = "<span style='color:yellow'>ГЕРОЯМ СЛАВА! 🇺🇦</span>";
-                break;
-            case "clear":
-                history.innerHTML = "";
-                break;
-            default:
-                response = `ERROR: Command '${cmd}' not found. Try 'help'.`;
+if(input) {
+    input.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+            const cmd = input.value.trim().toLowerCase();
+            history.innerHTML += `<div><span class="prompt">guest@ukrgeek:~$</span> ${input.value}</div>`;
+            
+            let response = "";
+            switch(cmd) {
+                case "help": response = "COMMANDS: [about] [projects] [email] [slava] [clear]"; break;
+                case "about": response = "Андрій Івась. Розробник. Архітектор. Патріот."; break;
+                case "projects": response = "GitHub: <a href='https://github.com/ivas-andre' target='_blank' style='color:#FFF'>ivas-andre</a>"; break;
+                case "email": response = "Email: contact@ukrgeek.life"; break;
+                case "slava": response = "<span style='color:yellow; font-weight:bold;'>ГЕРОЯМ СЛАВА! 🇺🇦</span>"; break;
+                case "clear": history.innerHTML = ""; break;
+                default: response = `<span style='color:red'>Error: Command '${cmd}' not found. Try 'help'.</span>`;
+            }
+            
+            if(cmd !== "clear") history.innerHTML += `<div style="margin-bottom: 10px; color: #EEE;">${response}</div>`;
+            input.value = "";
+            document.querySelector('.terminal-window').scrollTop = document.querySelector('.terminal-window').scrollHeight;
         }
-        
-        if (cmd !== "clear") {
-            history.innerHTML += `<div style="color:#FFF; margin-bottom:10px">${response}</div>`;
-        }
-        
-        input.value = "";
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-});
-
-// Авто-фокус
-document.addEventListener('click', () => input.focus());
+    });
+    document.addEventListener('click', () => input.focus());
+}
