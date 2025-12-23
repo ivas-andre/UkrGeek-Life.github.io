@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | UkrGeekLife</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+        .social-icon:hover { transform: scale(1.2); transition: 0.3s; }
+        #login-submit { transition: all 0.2s ease; }
+    </style>
+</head>
+<body class="h-screen flex items-center justify-center">
+
+    <div class="glass p-8 w-full max-w-md shadow-2xl">
+        <h2 class="text-3xl font-bold mb-6 text-center">Вхід до Системи</h2>
+        
+        <button id="biometric-btn" class="w-full mb-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg flex items-center justify-center gap-2 font-semibold">
+            <span>🛡️ Увійти через Біометрію</span>
+        </button>
+
+        <div class="relative flex py-4 items-center">
+            <div class="flex-grow border-t border-gray-600"></div>
+            <span class="flex-shrink mx-4 text-gray-400">або через соцмережі</span>
+            <div class="flex-grow border-t border-gray-600"></div>
+        </div>
+
+        <div class="flex justify-around mb-8">
+            <a href="#" title="GitHub" class="social-icon text-2xl">🐙</a>
+            <a href="#" title="LinkedIn" class="social-icon text-2xl">💼</a>
+            <a href="#" title="Reddit" class="social-icon text-2xl">🤖</a>
+            <a href="#" id="myspace-egg" title="MySpace (Easter Egg)" class="social-icon text-2xl cursor-help">🎵</a>
+        </div>
+
+        <form id="login-form" class="space-y-4">
+            <input type="email" placeholder="Email" class="w-full p-3 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:border-blue-400">
+            <input type="password" id="password" placeholder="Пароль" class="w-full p-3 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:border-blue-400">
+            <button type="submit" id="login-submit" class="w-full py-3 bg-white text-black font-bold rounded-lg uppercase tracking-wider">Увійти</button>
+        </form>
+
+        <p id="error-msg" class="text-red-400 text-sm mt-4 text-center hidden"></p>
+    </div>
+
+    <script>
+        // 1. Security Check (Block RU)
+        if (navigator.language.includes('ru')) {
+            document.body.innerHTML = "<div style='padding:50px; text-align:center;'><h1>Слава Україні!</h1><p>Доступ заблоковано для агресора.</p></div>";
+            window.location.href = "https://war.ukraine.ua/";
+        }
+
+        // 2. Fun Easter Egg (Running Button)
+        let attempts = 0;
+        const submitBtn = document.getElementById('login-submit');
+        const errorMsg = document.getElementById('error-msg');
+
+        submitBtn.addEventListener('mouseenter', () => {
+            if (attempts >= 3) {
+                submitBtn.style.position = 'absolute';
+                submitBtn.style.left = Math.random() * 70 + '%';
+                submitBtn.style.top = Math.random() * 70 + '%';
+                errorMsg.innerText = "Андрію, це треба перевірити: здається, кнопка втомилася від помилок!";
+                errorMsg.classList.remove('hidden');
+            }
+        });
+
+        document.getElementById('login-form').onsubmit = (e) => {
+            e.preventDefault();
+            attempts++;
+            errorMsg.innerText = "Невірний пароль. Спробуйте ще раз.";
+            errorMsg.classList.remove('hidden');
+        };
+
+        // 3. MySpace Easter Egg
+        document.getElementById('myspace-egg').onclick = () => {
+            alert("🎸 Ви активували режим 2005 року! Музичний плеєр завантажується...");
+        };
+
+        // 4. Biometrics Mock (Для демонстрації UX)
+        document.getElementById('biometric-btn').onclick = async () => {
+            if (window.PublicKeyCredential) {
+                alert("Запит на FaceID/TouchID надіслано...");

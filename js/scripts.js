@@ -173,3 +173,20 @@ const blockRussianLanguage = (input) => {
 if (localStorage.getItem('site_blocked') === 'true') {
     document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:20%;'>YOU ARE BANNED.</h1>";
 }
+
+// Функція для "втікаючої" кнопки (Fun UX)
+const loginBtn = document.querySelector('#login-submit');
+let attempts = 0;
+
+loginBtn.addEventListener('mouseover', () => {
+    if (attempts >= 3) {
+        loginBtn.style.position = 'absolute';
+        loginBtn.style.left = Math.random() * 80 + 'vw';
+        loginBtn.style.top = Math.random() * 80 + 'vh';
+        console.warn("Error: Користувач занадто серйозний. Активуємо режим гри.");
+    }
+});
+
+if (navigator.language === 'ru' || navigator.language === 'ru-RU') {
+    window.location.href = "https://war.ukraine.ua/";
+}
