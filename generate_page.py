@@ -1,36 +1,23 @@
 import os
 
-def create_page(page_name):
-    template_path = 'index.html' # Або ваш основний скелет
-    if not os.path.exists(template_path):
-        # Якщо шаблону немає, створимо базовий UX-скелет
-        skeleton = """<!DOCTYPE html>
+html_template = """
+<!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>{{TITLE}} | UkrGeekLife</title>
-    <link rel="stylesheet" href="style.css">
+    <title>{title}</title>
 </head>
 <body>
-    <header><h1>UkrGeekLife</h1></header>
-    <main id="app"></main>
-    <footer>Socials: GitHub, LinkedIn, MySpace (Easter Egg)</footer>
+    <div class="content">{content}</div>
 </body>
-</html>"""
-        with open(template_path, 'w', encoding='utf-8') as f:
-            f.write(skeleton)
-    
-    with open(template_path, 'r', encoding='utf-8') as f:
-        content = f.read()
-    
-    new_content = content.replace("{{TITLE}}", page_name.capitalize())
-    
-    with open(f'{page_name}.html', 'w', encoding='utf-8') as f:
-        f.write(new_content)
-    print(f"✅ Сторінка {page_name}.html створена успішно!")
+</html>
+"""
 
-create_page('login')
+pages = {
+    "login.html": {"title": "Login", "content": "<h1>Enter Matrix</h1>"}
+}
 
-# Приклад для index.html
-(Get-Content index.html) -replace '<title>.*</title>', '<title>UkrGeekLife | Андрій Івась | Головна</title>' | Set-Content index.html
-``` [cite: 2025-12-23]
+for filename, data in pages.items():
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(html_template.format(title=data["title"], content=data["content"]))
+    print(f"Generated {filename}")
