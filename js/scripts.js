@@ -140,3 +140,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Security Logic: Anti-Aggressor Protocol [cite: 2025-12-23]
+const blockRussianLanguage = (input) => {
+    // Регулярний вираз для пошуку російських літер (ы, э, ъ, ё)
+    const ruPattern = /[ыэъё]/i;
+    
+    if (ruPattern.test(input)) {
+        console.error("CRITICAL: Unauthorized language detected. Initiating Lockdown.");
+        
+        // Імітація збору даних для психологічного ефекту
+        const fakeIp = "192.168." + Math.floor(Math.random() * 255) + ".1";
+        const fakeMac = "00-B0-D0-63-C2-26";
+
+        document.body.innerHTML = `
+            <div style="background:#000; color:#ff0000; height:100vh; padding:50px; font-family:monospace; text-align:center;">
+                <h1>🛑 ACCESS DENIED PERMANENTLY</h1>
+                <p>IP: \${fakeIp} | MAC: \${fakeMac} | STATUS: LOGGED</p>
+                <hr style="border-color:red;">
+                <h2 style="color:#ffd700;">GLORY TO UKRAINE! 🇺🇦</h2>
+                <p style="color:#fff; font-size:20px;">You are violent on my site forever. Terrorist language is not accepted here.</p>
+                <p style="margin-top:50px;">[cite: 2025-12-23] Ми змінюємо світ. Я це пам'ятаю.</p>
+            </div>
+        `;
+        
+        // Блокування доступу через LocalStorage
+        localStorage.setItem('site_blocked', 'true');
+    }
+};
+
+// Перевірка при завантаженні
+if (localStorage.getItem('site_blocked') === 'true') {
+    document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:20%;'>YOU ARE BANNED.</h1>";
+}

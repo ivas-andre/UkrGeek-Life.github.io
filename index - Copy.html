@@ -1,22 +1,27 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Головна | UkrGeek-Life</title>
+    <title>UkrGeek-Life | Andrii Ivas</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
-<body class="futuristic-dark">
+    <link rel="stylesheet" href="css/styles.css">
 
+</head>
+<body>
+
+# Визначаємо блок навігації з відносними шляхами для GitHub
+$navBlock = @"
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
-                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="./index.html" style="color: #22c55e; font-weight:bold;">UKR GEEK LIFE</a>
+                <a class="navbar-brand" href="./index.html" style="color: #22c55e;">UKR GEEK LIFE</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-main">
                 <ul class="nav navbar-nav navbar-right">
@@ -29,21 +34,30 @@
             </div>
         </div>
     </nav>
+"@
 
-    <div class="container" style="margin-top: 100px; min-height: 80vh;">
-        <div class="geek-card animated fadeIn">
-            <h1 class="text-success">Головна | UkrGeek-Life</h1>
-            <hr style="border-color: #22c55e;">
-            <p>Контент для розділу "index" у розробці...</p>
+# Оновлюємо всі HTML файли
+$htmlFiles = Get-ChildItem *.html
+foreach ($file in $htmlFiles) {
+    $content = Get-Content $file.FullName -Raw
+    $newContent = $content -replace '(?s)<nav.*?>.*?</nav>', $navBlock
+    $newContent | Out-File $file.FullName -Encoding utf8
+    Write-Host "[+] GitHub Link Applied: $($file.Name)" -ForegroundColor Cyan
+}
+
+<div style="height: 50px;"></div>
+
+    <div style="padding-top: 50px;"></div>
+
+    <section class="hero text-center" style="padding: 100px 20px;">
+        <div class="container">
+            <h1>Системний Менеджмент</h1>
+            <p class="lead">Андрій Івась: Автоматизація, Безпека, UX-дизайн систем.</p>
         </div>
-    </div>
-
-    <footer class="text-center" style="padding: 20px; color: #64748b;">
-        <p>© 2025 UkrGeek-Life. Слава Україні! 🇺🇦</p>
-    </footer>
+    </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="./js/scripts.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
