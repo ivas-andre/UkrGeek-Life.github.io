@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import os, sys, subprocess, time, random
 
-# --- 1. CONFIGURATION ---
+# --- CONFIGURATION ---
 IDENTITY = "UkrGeekLife | Andrii Ivas"
 sys.stdout.reconfigure(encoding='utf-8')
 
-# SOCIAL LINKS
+# SOCIAL LINKS (NO TELEGRAM)
 LINKS = {
     "YOUTUBE": "https://www.youtube.com/@UkrGeekLife",
     "INSTA_MAIN": "https://www.instagram.com/ivas_andrii/",
@@ -16,7 +16,7 @@ LINKS = {
     "TUMBLR": "https://www.tumblr.com/andre-ivas",
     "TWITCH": "https://www.twitch.tv/ivas_andre",
     "GITHUB": "https://github.com/ivas-andre",
-    "SPOTIFY": "https://open.spotify.com/playlist/1BG0k1dDJN14PczoyvSD6T?si=JVz8SvIGQHeba0XCCsulzQ" 
+    "SPOTIFY": "https://open.spotify.com/user/ivas_andre" 
 }
 VIDEO_ID = "-h7ygd0mp7c"
 
@@ -25,70 +25,59 @@ def run(cmd):
         subprocess.run(cmd, shell=True, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         print(f"✅ Executed: {cmd}")
     except:
-        print(f"ℹ️ Git status: Nothing to commit or ready.")
+        print(f"ℹ️ Git: Ready.")
 
-# --- 2. CONTENT GENERATION ---
-
-print("--- READING about_me.txt ---")
+print("--- READING DATA ---")
 try:
     with open("about_me.txt", "r", encoding="utf-8") as f: BASE_ABOUT = f.read()
 except: BASE_ABOUT = "<h1>ERROR</h1><p>File missing.</p>"
 
-# IDENTITY PAGE with HOVER REVEAL (ALIEN STYLE)
-IDENTITY_EXTRAS = f"""
-<div class="data-core-container">
-    <div class="data-core-trigger">
-        <span class="core-label">[ HOVER TO ACCESS DATA_CORE ]</span>
-        <div class="hidden-links">
-            <a href="video.html">/VIDEO_STREAM</a>
-            <a href="photo.html">/PHOTO_GRID</a>
-            <a href="blog.html">/SYS_LOGS</a>
-            <a href="podcast.html">/AUDIO_FEED</a>
-            <a href="{LINKS['SPOTIFY']}" target="_blank">/SPOTIFY_VIBE</a>
-        </div>
-    </div>
-</div>
-<div style="margin-top:20px; border-top:1px dashed #0F0; padding-top:10px;">
-    <h3>> SOCIAL_UPLINKS</h3>
-    <div class="text-links">
-        <a href="{LINKS['YOUTUBE']}" target="_blank">[YOUTUBE]</a>
-        <a href="{LINKS['INSTA_MAIN']}" target="_blank">[INSTA_MAIN]</a>
-        <a href="{LINKS['INSTA_PHOTO']}" target="_blank">[INSTA_PHOTO]</a>
-        <a href="{LINKS['LINKEDIN']}" target="_blank">[LINKEDIN]</a>
-        <a href="{LINKS['GITHUB']}" target="_blank">[GITHUB]</a>
+# --- CONTENT BLOCKS ---
+
+# IDENTITY PAGE (HAL 9000 LINKS)
+HAL_LINKS = f"""
+<div style="margin-top:40px;border-top:2px solid #333;padding-top:20px;">
+    <h2 style="color:#FFF;letter-spacing:2px;">> DIRECT_UPLINK_CHANNELS</h2>
+    <div class="hal-grid">
+        <a href="{LINKS['YOUTUBE']}" target="_blank" class="hal-btn"><div class="hal-eye"></div><span>YOUTUBE_CORE</span></a>
+        <a href="{LINKS['INSTA_MAIN']}" target="_blank" class="hal-btn"><div class="hal-eye"></div><span>LIFE_LOGS</span></a>
+        <a href="{LINKS['INSTA_PHOTO']}" target="_blank" class="hal-btn"><div class="hal-eye"></div><span>VISUAL_DATA</span></a>
+        <a href="{LINKS['LINKEDIN']}" target="_blank" class="hal-btn"><div class="hal-eye"></div><span>CAREER_NET</span></a>
+        <a href="{LINKS['GITHUB']}" target="_blank" class="hal-btn"><div class="hal-eye"></div><span>CODE_REPO</span></a>
+        <a href="{LINKS['FACEBOOK']}" target="_blank" class="hal-btn"><div class="hal-eye"></div><span>FACEBOOK</span></a>
+        <a href="{LINKS['X']}" target="_blank" class="hal-btn"><div class="hal-eye"></div><span>X_SIGNAL</span></a>
+        <a href="{LINKS['TWITCH']}" target="_blank" class="hal-btn"><div class="hal-eye"></div><span>LIVE_FEED</span></a>
     </div>
 </div>
 """
-ABOUT_CONTENT = BASE_ABOUT + IDENTITY_EXTRAS
+ABOUT_CONTENT = BASE_ABOUT + HAL_LINKS
 
-# PHOTO PAGE (3 COLUMNS DESKTOP / 1 MOBILE)
+# PHOTO PAGE (GRID + SNAPWIDGET)
 PHOTO_CONTENT = """
-<h1>/MNT/DCIM/GALLERY</h1>
-<p>Visual logs. Reality capture.</p>
-<div class="photo-grid">
-    <div class="grid-item">
-        <div class="item-header">:: CAM_01 [LIVE] ::</div>
+<h1>/MNT/DCIM/GALLERY_GRID</h1>
+<p>Visual Database. Multiple streams connected.</p>
+<div class="photo-grid-container">
+    <div class="widget-box">
+        <div class="widget-header">CAM_01: MAIN_FEED</div>
         <iframe src="https://snapwidget.com/embed/1115084" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; height:100%" title="Posts from Instagram"></iframe>
     </div>
-    <div class="grid-item placeholder">
-        <div class="item-header">:: CAM_02 [OFFLINE] ::</div>
-        <div class="noise">NO SIGNAL</div>
+    <div class="widget-box placeholder"><div class="widget-header">CAM_02: SIGNAL_LOST</div><div class="static-noise">NO SIGNAL</div></div>
+    <div class="widget-box placeholder"><div class="widget-header">CAM_03: OFFLINE</div><div class="static-noise">Waiting for uplink...</div></div>
+    <div class="widget-box placeholder"><div class="widget-header">CAM_04: OFFLINE</div><div class="static-noise">Waiting for uplink...</div></div>
+</div>
+"""
+
+# TERMINAL CONTENT (RESTORED FUNCTIONALITY)
+CONTACT_CONTENT = """
+<h1>Terminal Access</h1>
+<div class='terminal-window'>
+    <div id='history'>
+        <p>UkrGeekLife OS v17.0 (Restored)...</p>
+        <p>Type 'help' for commands.</p>
     </div>
-    <div class="grid-item placeholder">
-        <div class="item-header">:: CAM_03 [OFFLINE] ::</div>
-        <div class="noise">WAITING UPLINK...</div>
-    </div>
-    <div class="grid-item placeholder">
-        <div class="item-header">:: CAM_04 [OFFLINE] ::</div>
-        <div class="noise">STATIC...</div>
-    </div>
-    <div class="grid-item placeholder">
-        <div class="item-header">:: CAM_05 [OFFLINE] ::</div>
-        <div class="noise">...</div>
-    </div>
-    <div class="grid-item placeholder">
-        <div class="item-header">:: CAM_06 [OFFLINE] ::</div>
-        <div class="noise">...</div>
+    <div class='input-line'>
+        <span class='prompt'>root@ukrgeek:~#</span>
+        <input type='text' id='cmd' autofocus autocomplete='off' enterkeyhint='go'>
     </div>
 </div>
 """
@@ -99,81 +88,59 @@ VIDEO_CONTENT = f"""<h1>/VAR/VIDEO</h1><div class="video-wrapper"><iframe id="ma
 BLOG_CONTENT = """<h1>/SYS/LOG</h1><div class="log-entry"><span class="highlight">[2025]</span> REBOOT. New philosophy.</div>"""
 PODCAST_CONTENT = """<h1>/AUDIO</h1><div class="alert">Audio modules offline.</div>"""
 
-# --- 3. CSS (RESPONSIVE FIX + HOVER EFFECT) ---
+# --- CSS CODE ---
 CSS_CODE = """
-/* BASE */
 body { background-color: #050505; color: #0F0; font-family: 'Courier New', monospace; margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
 #matrix-bg { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15; }
+header { background: #1a1a1a; border-bottom: 1px solid #333; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+.header-social { display: flex; gap: 15px; }
+.social-icon { color: #888; font-size: 1.2rem; text-decoration: none; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 1px solid #333; background: rgba(0,0,0,0.5); border-radius: 4px; }
+.social-icon:hover { color: #0F0; border-color: #0F0; box-shadow: 0 0 8px #0F0; }
 
-/* HEADER (LINUX STYLE) */
-header { background: #111; border-bottom: 2px solid #333; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-.window-controls { display: flex; gap: 8px; }
-.dot { width: 12px; height: 12px; border-radius: 50%; }
-.red { background: #ff5f56; cursor: pointer; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
-.win-title { color: #666; font-weight: bold; letter-spacing: 1px; }
+nav { display: flex; gap: 10px; }
+nav a { color: #FFF; text-decoration: none; font-size: 0.9rem; padding: 5px; }
+nav a:hover { color: #0F0; background: #111; }
+@media(max-width: 900px) { nav { display: none; } }
 
-/* NAVIGATION (FLEXIBLE) */
-nav { display: flex; gap: 15px; }
-nav a { color: #AAA; text-decoration: none; font-size: 1rem; font-weight: bold; transition: 0.3s; }
-nav a:hover { color: #0F0; text-shadow: 0 0 5px #0F0; }
-.burger-menu { display: none; cursor: pointer; color: #0F0; font-size: 1.5rem; }
+.container { flex: 1; max-width: 900px; margin: 20px auto; padding: 20px; border: 1px solid #333; background: rgba(0, 0, 0, 0.9); }
+h1, h2 { border-bottom: 1px solid #0F0; color: #FFF; }
+.alert { border: 1px solid #F00; color: #F88; padding: 10px; }
+.video-wrapper { border: 2px solid #0F0; padding: 5px; background: #000; }
 
-/* RESPONSIVE NAV */
-@media (max-width: 768px) {
-    nav { display: none; flex-direction: column; position: absolute; top: 50px; right: 0; background: #000; border: 1px solid #0F0; width: 200px; padding: 10px; }
-    nav.active { display: flex; }
-    .burger-menu { display: block; }
-    .win-title { display: none; }
-}
+/* HAL 9000 GRID */
+.hal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-top: 20px; }
+.hal-btn { display: flex; flex-direction: column; align-items: center; padding: 15px; border: 1px solid #444; background: #111; color: #888; text-decoration: none; transition: 0.3s; }
+.hal-eye { width: 20px; height: 20px; background: #300; border-radius: 50%; margin-bottom: 10px; border: 2px solid #500; box-shadow: 0 0 5px #500; transition: 0.3s; }
+.hal-btn:hover { border-color: #F00; color: #FFF; background: #000; }
+.hal-btn:hover .hal-eye { background: #F00; border-color: #FFF; box-shadow: 0 0 15px #F00; transform: scale(1.2); }
 
-/* CONTAINER */
-.container { flex: 1; width: 90%; max-width: 1200px; margin: 20px auto; padding: 20px; border: 1px solid #333; background: rgba(0, 0, 0, 0.9); box-sizing: border-box; }
-h1 { border-bottom: 2px solid #0F0; color: #FFF; padding-bottom: 5px; }
-h2 { border-bottom: 1px solid #333; color: #DDD; margin-top: 20px; }
-.alert { border: 1px solid #F00; color: #F00; padding: 10px; background: rgba(50,0,0,0.2); }
+/* PHOTO GRID */
+.photo-grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+.widget-box { border: 1px solid #0F0; height: 400px; display: flex; flex-direction: column; background: #000; }
+.widget-header { background: #002200; color: #0F0; padding: 5px; font-size: 0.8rem; border-bottom: 1px solid #0F0; }
+.widget-box iframe { flex: 1; }
+.placeholder .widget-header { background: #222; color: #888; border-color: #555; }
+.static-noise { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #444; background: repeating-linear-gradient(0deg, #111, #111 2px, #222 3px); }
 
-/* IDENTITY HOVER EFFECT (ALIEN/DATA CORE) */
-.data-core-container { margin-top: 30px; perspective: 1000px; }
-.data-core-trigger { 
-    background: #050505; border: 1px solid #0F0; padding: 15px; 
-    text-align: center; transition: all 0.5s ease; cursor: pointer; position: relative; overflow: hidden;
-}
-.core-label { font-size: 1.2rem; font-weight: bold; }
-.hidden-links { 
-    max-height: 0; opacity: 0; transition: all 0.5s ease; 
-    display: flex; flex-direction: column; gap: 10px; margin-top: 0;
-}
-/* HOVER STATE */
-.data-core-trigger:hover { border-color: #F00; background: #100; box-shadow: 0 0 20px rgba(255,0,0,0.3); }
-.data-core-trigger:hover .core-label { color: #F00; letter-spacing: 3px; }
-.data-core-trigger:hover .hidden-links { max-height: 200px; opacity: 1; margin-top: 15px; }
-.hidden-links a { color: #FFF; text-decoration: none; border-left: 2px solid #F00; padding-left: 10px; }
-.hidden-links a:hover { background: #300; color: #F00; }
+/* FOOTER (ICONS RESTORED) */
+footer { border-top: 1px dashed #0F0; padding: 20px; text-align: center; font-size: 0.8rem; color: #555; margin-top: auto; }
+.footer-links { margin-top: 10px; }
+.footer-links a { color: #555; margin: 0 10px; font-size: 1.2rem; transition: 0.3s; }
+.footer-links a:hover { color: #FFF; text-shadow: 0 0 5px #FFF; }
+.burger-menu { cursor: pointer; display: none; color: #0F0; font-weight: bold; } 
+@media(max-width: 900px) { .burger-menu { display: block; } }
 
-/* PHOTO GRID (RESPONSIVE) */
-.photo-grid { display: grid; gap: 20px; margin-top: 20px; }
-/* DESKTOP: 3 COLS */
-@media (min-width: 900px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
-/* TABLET: 2 COLS */
-@media (min-width: 600px) and (max-width: 899px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
-/* MOBILE: 1 COL */
-@media (max-width: 599px) { .photo-grid { grid-template-columns: 1fr; } }
-
-.grid-item { border: 1px solid #333; background: #000; height: 400px; display: flex; flex-direction: column; transition: 0.3s; }
-.grid-item:hover { border-color: #0F0; box-shadow: 0 0 10px rgba(0,255,0,0.2); }
-.item-header { background: #111; color: #888; padding: 5px; font-size: 0.8rem; border-bottom: 1px solid #333; font-family: monospace; }
-.grid-item iframe { flex: 1; width: 100%; height: 100%; }
-.placeholder .noise { flex: 1; display: flex; align-items: center; justify-content: center; color: #333; background: repeating-linear-gradient(45deg, #000, #000 5px, #111 5px, #111 10px); }
-
-/* FOOTER (OLD SCHOOL TEXT BACK) */
-footer { border-top: 2px solid #0F0; background: #020202; padding: 20px; text-align: center; color: #666; margin-top: auto; }
-.zoo-list { color: #004400; font-size: 0.9rem; margin-bottom: 10px; letter-spacing: 1px; }
-.zoo-list:hover { color: #0F0; }
-.text-links a { color: #666; margin: 0 5px; text-decoration: none; }
-.text-links a:hover { color: #FFF; text-decoration: underline; }
+/* TERMINAL FIXES */
+.terminal-window { background: #111; border: 1px solid #0F0; padding: 15px; height: 50vh; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 1rem; text-align: left; }
+.input-line { display: flex; align-items: center; }
+.prompt { color: #0F0; margin-right: 10px; font-weight: bold; white-space: nowrap; }
+input#cmd { background: transparent; border: none; color: #FFF; font-family: 'Courier New', monospace; font-size: 1rem; flex-grow: 1; outline: none; width: 100%; }
+#typewriter-content { visibility: hidden; }
+.cursor::after { content: '█'; animation: blink 1s infinite; color: #0F0; margin-left: 5px; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 """
 
-# --- 4. JS ---
+# --- JS CODE (RESTORED TYPEWRITER & TERMINAL) ---
 JS_MAIN = """
 const canvas = document.getElementById('matrix-bg');
 const ctx = canvas.getContext('2d');
@@ -194,38 +161,103 @@ function draw() {
 setInterval(draw, 33);
 window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
-function killSystem() { document.body.innerHTML='<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:red;font-size:3rem;font-family:monospace;">SYSTEM PURGED</div>'; }
-function toggleMenu() { document.querySelector('nav').classList.toggle('active'); }
+function killSystem() { document.body.innerHTML='<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:red;font-size:2rem;">SYSTEM HALTED</div>'; }
+function toggleMenu() { 
+    let nav = document.querySelector('nav');
+    if(nav.style.display==='flex') nav.style.display='none'; 
+    else { nav.style.display='flex'; nav.style.flexDirection='column'; nav.style.position='fixed'; nav.style.top='50px'; nav.style.right='0'; nav.style.background='#000'; nav.style.border='1px solid #0F0'; }
+}
+
+// LIVE TYPEWRITER RESTORED
+document.addEventListener("DOMContentLoaded", function() {
+    const element = document.getElementById('typewriter-content');
+    if (element) {
+        const text = element.innerHTML;
+        element.innerHTML = "";
+        element.classList.add("cursor");
+        element.style.visibility = "visible";
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                if (text.charAt(i) === '<') {
+                    let tag = "";
+                    while (text.charAt(i) !== '>' && i < text.length) { tag += text.charAt(i); i++; }
+                    tag += '>'; i++; element.innerHTML += tag;
+                } else { element.innerHTML += text.charAt(i); i++; }
+                setTimeout(type, 3);
+            }
+        }
+        type();
+    }
+    
+    // TERMINAL LOGIC RESTORED
+    const input = document.getElementById("cmd");
+    const history = document.getElementById("history");
+    if(input) {
+        input.focus();
+        document.querySelector('.terminal-window').addEventListener('click', () => input.focus());
+        input.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                const rawCmd = input.value.trim();
+                const cmd = rawCmd.toLowerCase();
+                history.innerHTML += `<div><span class="prompt">root@ukrgeek:~#</span> ${rawCmd}</div>`;
+                let res = "";
+                switch(cmd) {
+                    case "help": res = "COMMANDS: [about] [projects] [video] [photo] [blog] [email] [slava] [kill]"; break;
+                    case "about": window.location='about.html'; break;
+                    case "projects": window.location='projects.html'; break;
+                    case "photo": window.location='photo.html'; break;
+                    case "video": window.location='video.html'; break;
+                    case "blog": window.location='blog.html'; break;
+                    case "slava": res = "<span style='color:yellow'>GEROYAM SLAVA! 🇺🇦</span>"; break;
+                    case "kill": killSystem(); break;
+                    case "clear": history.innerHTML = ""; break;
+                    case "": res = ""; break;
+                    default: res = `<span style='color:red'>bash: ${rawCmd}: command not found</span>`;
+                }
+                if(cmd !== "clear" && res !== "") history.innerHTML += `<div style='color:#DDD'>${res}</div>`;
+                input.value = "";
+                document.querySelector('.terminal-window').scrollTop = document.querySelector('.terminal-window').scrollHeight;
+            }
+        });
+    }
+});
 """
 
-# --- 5. TEMPLATES & BUILD ---
+# --- TEMPLATES ---
 BASE_HTML = """<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>{title}</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head><body><canvas id="matrix-bg"></canvas>
 <header>
-    <div style="display:flex; gap:10px; align-items:center;">
-        <div class="window-controls"><div class="dot red" onclick="killSystem()"></div><div class="dot yellow"></div><div class="dot green"></div></div>
-        <span class="win-title">root@ukrgeek:~</span>
+    <div style="display:flex; gap:10px;"><div class="dot red" style="width:12px;height:12px;background:#f55;border-radius:50%;cursor:pointer;" onclick="killSystem()"></div><span style="color:#888;font-weight:bold;">root@ukrgeek:~</span></div>
+    <div class="header-social">
+        <a href="{yt}" class="social-icon"><i class="fab fa-youtube"></i></a>
+        <a href="{im}" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="{fb}" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="{li}" class="social-icon"><i class="fab fa-linkedin"></i></a>
     </div>
-    <div class="burger-menu" onclick="toggleMenu()">[MENU]</div>
     <nav>
         <a href="index.html">/HOME</a><a href="about.html">/IDENTITY</a><a href="projects.html">/ARSENAL</a>
         <a href="photo.html">/PHOTO</a><a href="video.html">/VIDEO</a><a href="blog.html">/BLOG</a>
         <a href="contact.html">/TERMINAL</a>
     </nav>
+    <div class="burger-menu" onclick="toggleMenu()">[MENU]</div>
 </header>
-<main class="container">{content}</main>
+<main class="container"><div id="typewriter-content">{content}</div></main>
 <footer>
-    <div class="zoo-list">[ ZOO: 4 CATS | 2 DOGS | 1 RAT | 1 TURTLE ]</div>
-    <div class="text-links">
-        <a href="{yt}" target="_blank">YOUTUBE</a> | <a href="{tg}" target="_blank">TELEGRAM</a> | <a href="{gh}" target="_blank">GITHUB</a> | <a href="{x}" target="_blank">X</a>
+    <div style="margin-bottom:10px;">[ SYSTEM RESOURCES: 4 CATS | 2 DOGS | 1 RAT | 1 TURTLE ]</div>
+    <div class="footer-links">
+        <a href="{x}"><i class="fab fa-twitter"></i></a><a href="{tu}"><i class="fab fa-tumblr"></i></a>
+        <a href="{tw}"><i class="fab fa-twitch"></i></a><a href="{gh}"><i class="fab fa-github"></i></a>
+        <a href="{sp}"><i class="fab fa-spotify"></i></a>
     </div>
-    <div style="margin-top:10px;font-size:0.7rem;">© 2025 {id} | NO FORGIVENESS</div>
+    <div style="margin-top:10px;opacity:0.5;font-size:0.7rem;">© 2025 {id} | NO FORGIVENESS</div>
     </footer>
 <script src="js/main.js"></script>
 </body></html>"""
 
+# --- EXECUTION ---
 print("--- WRITING FILES ---")
 os.makedirs("css", exist_ok=True)
 os.makedirs("js", exist_ok=True)
@@ -235,13 +267,14 @@ with open("js/main.js", "w", encoding="utf-8") as f: f.write(JS_MAIN)
 pages = {
     "index.html": INDEX_CONTENT, "about.html": ABOUT_CONTENT, "projects.html": PROJECTS_CONTENT,
     "photo.html": PHOTO_CONTENT, "video.html": VIDEO_CONTENT, "blog.html": BLOG_CONTENT,
-    "podcast.html": PODCAST_CONTENT, "contact.html": "<h1>TERMINAL</h1><p>Ready.</p>"
+    "podcast.html": PODCAST_CONTENT, "contact.html": CONTACT_CONTENT
 }
 
 for fname, content in pages.items():
     html = BASE_HTML.format(
         title=f"{fname} | {IDENTITY}", content=content, id=IDENTITY, rnd=random.random(),
-        yt=LINKS['YOUTUBE'], tg="https://t.me/UkrGeekLife", gh=LINKS['GITHUB'], x=LINKS['X']
+        yt=LINKS['YOUTUBE'], im=LINKS['INSTA_MAIN'], fb=LINKS['FACEBOOK'], li=LINKS['LINKEDIN'],
+        x=LINKS['X'], tu=LINKS['TUMBLR'], tw=LINKS['TWITCH'], gh=LINKS['GITHUB'], sp=LINKS['SPOTIFY']
     )
     with open(fname, "w", encoding="utf-8") as f: f.write(html)
     print(f"✅ {fname}")
@@ -249,6 +282,6 @@ for fname, content in pages.items():
 print("--- DEPLOYING ---")
 time.sleep(1)
 run("git add .")
-run(f'git commit -m "UkrGeekLife | Responsive Fix & Hover Core | {time.strftime("%H:%M:%S")}"')
+run(f'git commit -m "UkrGeekLife | Fixed Terminal & Icons | {time.strftime("%H:%M:%S")}"')
 run("git push origin master")
-print(">>> DONE.")
+print(">>> DONE. EVERYTHING RESTORED.")

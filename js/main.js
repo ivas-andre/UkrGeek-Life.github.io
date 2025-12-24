@@ -18,5 +18,64 @@ function draw() {
 setInterval(draw, 33);
 window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
-function killSystem() { document.body.innerHTML='<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:red;font-size:3rem;font-family:monospace;">SYSTEM PURGED</div>'; }
-function toggleMenu() { document.querySelector('nav').classList.toggle('active'); }
+function killSystem() { document.body.innerHTML='<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:red;font-size:2rem;">SYSTEM HALTED</div>'; }
+function toggleMenu() { 
+    let nav = document.querySelector('nav');
+    if(nav.style.display==='flex') nav.style.display='none'; 
+    else { nav.style.display='flex'; nav.style.flexDirection='column'; nav.style.position='fixed'; nav.style.top='50px'; nav.style.right='0'; nav.style.background='#000'; nav.style.border='1px solid #0F0'; }
+}
+
+// LIVE TYPEWRITER RESTORED
+document.addEventListener("DOMContentLoaded", function() {
+    const element = document.getElementById('typewriter-content');
+    if (element) {
+        const text = element.innerHTML;
+        element.innerHTML = "";
+        element.classList.add("cursor");
+        element.style.visibility = "visible";
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                if (text.charAt(i) === '<') {
+                    let tag = "";
+                    while (text.charAt(i) !== '>' && i < text.length) { tag += text.charAt(i); i++; }
+                    tag += '>'; i++; element.innerHTML += tag;
+                } else { element.innerHTML += text.charAt(i); i++; }
+                setTimeout(type, 3);
+            }
+        }
+        type();
+    }
+    
+    // TERMINAL LOGIC RESTORED
+    const input = document.getElementById("cmd");
+    const history = document.getElementById("history");
+    if(input) {
+        input.focus();
+        document.querySelector('.terminal-window').addEventListener('click', () => input.focus());
+        input.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                const rawCmd = input.value.trim();
+                const cmd = rawCmd.toLowerCase();
+                history.innerHTML += `<div><span class="prompt">root@ukrgeek:~#</span> ${rawCmd}</div>`;
+                let res = "";
+                switch(cmd) {
+                    case "help": res = "COMMANDS: [about] [projects] [video] [photo] [blog] [email] [slava] [kill]"; break;
+                    case "about": window.location='about.html'; break;
+                    case "projects": window.location='projects.html'; break;
+                    case "photo": window.location='photo.html'; break;
+                    case "video": window.location='video.html'; break;
+                    case "blog": window.location='blog.html'; break;
+                    case "slava": res = "<span style='color:yellow'>GEROYAM SLAVA! 🇺🇦</span>"; break;
+                    case "kill": killSystem(); break;
+                    case "clear": history.innerHTML = ""; break;
+                    case "": res = ""; break;
+                    default: res = `<span style='color:red'>bash: ${rawCmd}: command not found</span>`;
+                }
+                if(cmd !== "clear" && res !== "") history.innerHTML += `<div style='color:#DDD'>${res}</div>`;
+                input.value = "";
+                document.querySelector('.terminal-window').scrollTop = document.querySelector('.terminal-window').scrollHeight;
+            }
+        });
+    }
+});

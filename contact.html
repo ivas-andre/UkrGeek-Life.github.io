@@ -3,24 +3,41 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head><body><canvas id="matrix-bg"></canvas>
 <header>
-    <div style="display:flex; gap:10px; align-items:center;">
-        <div class="window-controls"><div class="dot red" onclick="killSystem()"></div><div class="dot yellow"></div><div class="dot green"></div></div>
-        <span class="win-title">root@ukrgeek:~</span>
+    <div style="display:flex; gap:10px;"><div class="dot red" style="width:12px;height:12px;background:#f55;border-radius:50%;cursor:pointer;" onclick="killSystem()"></div><span style="color:#888;font-weight:bold;">root@ukrgeek:~</span></div>
+    <div class="header-social">
+        <a href="https://www.youtube.com/@UkrGeekLife" class="social-icon"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/ivas_andrii/" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/Andrii.Ivas/" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/ivas-andre/" class="social-icon"><i class="fab fa-linkedin"></i></a>
     </div>
-    <div class="burger-menu" onclick="toggleMenu()">[MENU]</div>
     <nav>
         <a href="index.html">/HOME</a><a href="about.html">/IDENTITY</a><a href="projects.html">/ARSENAL</a>
         <a href="photo.html">/PHOTO</a><a href="video.html">/VIDEO</a><a href="blog.html">/BLOG</a>
         <a href="contact.html">/TERMINAL</a>
     </nav>
+    <div class="burger-menu" onclick="toggleMenu()">[MENU]</div>
 </header>
-<main class="container"><h1>TERMINAL</h1><p>Ready.</p></main>
-<footer>
-    <div class="zoo-list">[ ZOO: 4 CATS | 2 DOGS | 1 RAT | 1 TURTLE ]</div>
-    <div class="text-links">
-        <a href="https://www.youtube.com/@UkrGeekLife" target="_blank">YOUTUBE</a> | <a href="https://t.me/UkrGeekLife" target="_blank">TELEGRAM</a> | <a href="https://github.com/ivas-andre" target="_blank">GITHUB</a> | <a href="https://x.com/Andrii_Ivas" target="_blank">X</a>
+<main class="container"><div id="typewriter-content">
+<h1>Terminal Access</h1>
+<div class='terminal-window'>
+    <div id='history'>
+        <p>UkrGeekLife OS v17.0 (Restored)...</p>
+        <p>Type 'help' for commands.</p>
     </div>
-    <div style="margin-top:10px;font-size:0.7rem;">© 2025 UkrGeekLife | Andrii Ivas | NO FORGIVENESS</div>
+    <div class='input-line'>
+        <span class='prompt'>root@ukrgeek:~#</span>
+        <input type='text' id='cmd' autofocus autocomplete='off' enterkeyhint='go'>
+    </div>
+</div>
+</div></main>
+<footer>
+    <div style="margin-bottom:10px;">[ SYSTEM RESOURCES: 4 CATS | 2 DOGS | 1 RAT | 1 TURTLE ]</div>
+    <div class="footer-links">
+        <a href="https://x.com/Andrii_Ivas"><i class="fab fa-twitter"></i></a><a href="https://www.tumblr.com/andre-ivas"><i class="fab fa-tumblr"></i></a>
+        <a href="https://www.twitch.tv/ivas_andre"><i class="fab fa-twitch"></i></a><a href="https://github.com/ivas-andre"><i class="fab fa-github"></i></a>
+        <a href="https://open.spotify.com/user/ivas_andre"><i class="fab fa-spotify"></i></a>
+    </div>
+    <div style="margin-top:10px;opacity:0.5;font-size:0.7rem;">© 2025 UkrGeekLife | Andrii Ivas | NO FORGIVENESS</div>
     </footer>
 <script src="js/main.js"></script>
 </body></html>
