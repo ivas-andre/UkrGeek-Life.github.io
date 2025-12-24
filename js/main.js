@@ -18,7 +18,6 @@ function draw() {
 setInterval(draw, 33);
 window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
-// MENU TOGGLE (THE SPACE ODYSSEY POP-UP)
 function toggleMenu() { 
     const menu = document.getElementById('monolith-menu');
     if (menu.classList.contains('active')) {
@@ -30,19 +29,7 @@ function toggleMenu() {
     }
 }
 
-// EASTER EGG: HAL 9000
 function talkHal() { alert("I'm sorry, Dave. I'm afraid I can't do that."); }
-
-// EASTER EGG: KONAMI CODE
-let konami = "";
-document.addEventListener('keydown', (e) => {
-    konami += e.key;
-    if (konami.includes("ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba")) {
-        alert("ALIEN PROTOCOL INITIATED");
-        document.body.style.filter = "invert(1)";
-        konami = "";
-    }
-});
 
 // TYPEWRITER & TERMINAL
 document.addEventListener("DOMContentLoaded", function() {
@@ -66,11 +53,15 @@ document.addEventListener("DOMContentLoaded", function() {
         type();
     }
     
+    // FORCE FOCUS ON TERMINAL
     const input = document.getElementById("cmd");
     const history = document.getElementById("history");
     if(input) {
         input.focus();
+        // Keep focus
         document.querySelector('.terminal-window').addEventListener('click', () => input.focus());
+        input.addEventListener("blur", () => setTimeout(() => input.focus(), 10));
+        
         input.addEventListener("keydown", function(e) {
             if (e.key === "Enter") {
                 const rawCmd = input.value.trim();
