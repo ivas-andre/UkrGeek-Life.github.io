@@ -3,54 +3,53 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head><body><canvas id="matrix-bg"></canvas>
 <header>
-    <div style="display:flex; gap:10px;"><div class="dot red" style="width:12px;height:12px;background:#f55;border-radius:50%;cursor:pointer;" onclick="killSystem()"></div><span style="color:#888;font-weight:bold;">root@ukrgeek:~</span></div>
-    <div class="header-social">
-        <a href="https://www.youtube.com/@UkrGeekLife" class="social-icon"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.instagram.com/ivas_andrii/" class="social-icon"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/Andrii.Ivas/" class="social-icon"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.linkedin.com/in/ivas-andre/" class="social-icon"><i class="fab fa-linkedin"></i></a>
+    <div style="display:flex; gap:10px; align-items:center;">
+        <div class="window-controls"><div class="dot red" onclick="killSystem()"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+        <span class="win-title">root@ukrgeek:~</span>
     </div>
+    <div class="burger-menu" onclick="toggleMenu()">[MENU]</div>
     <nav>
         <a href="index.html">/HOME</a><a href="about.html">/IDENTITY</a><a href="projects.html">/ARSENAL</a>
         <a href="photo.html">/PHOTO</a><a href="video.html">/VIDEO</a><a href="blog.html">/BLOG</a>
         <a href="contact.html">/TERMINAL</a>
     </nav>
-    <div class="burger-menu" onclick="toggleMenu()">[MENU]</div>
 </header>
 <main class="container">
-<h1>/MNT/DCIM/GALLERY_GRID</h1>
-<p>Visual Database. Multiple streams connected.</p>
-
-<div class="photo-grid-container">
-    <div class="widget-box">
-        <div class="widget-header">CAM_01: MAIN_FEED</div>
+<h1>/MNT/DCIM/GALLERY</h1>
+<p>Visual logs. Reality capture.</p>
+<div class="photo-grid">
+    <div class="grid-item">
+        <div class="item-header">:: CAM_01 [LIVE] ::</div>
         <iframe src="https://snapwidget.com/embed/1115084" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; height:100%" title="Posts from Instagram"></iframe>
     </div>
-
-    <div class="widget-box placeholder">
-        <div class="widget-header">CAM_02: SIGNAL_LOST</div>
-        <div class="static-noise">NO SIGNAL<br><small>Add Widget Code Here</small></div>
+    <div class="grid-item placeholder">
+        <div class="item-header">:: CAM_02 [OFFLINE] ::</div>
+        <div class="noise">NO SIGNAL</div>
     </div>
-
-    <div class="widget-box placeholder">
-        <div class="widget-header">CAM_03: OFFLINE</div>
-        <div class="static-noise">Waiting for uplink...</div>
+    <div class="grid-item placeholder">
+        <div class="item-header">:: CAM_03 [OFFLINE] ::</div>
+        <div class="noise">WAITING UPLINK...</div>
     </div>
-    
-    <div class="widget-box placeholder">
-        <div class="widget-header">CAM_04: OFFLINE</div>
-        <div class="static-noise">Waiting for uplink...</div>
+    <div class="grid-item placeholder">
+        <div class="item-header">:: CAM_04 [OFFLINE] ::</div>
+        <div class="noise">STATIC...</div>
+    </div>
+    <div class="grid-item placeholder">
+        <div class="item-header">:: CAM_05 [OFFLINE] ::</div>
+        <div class="noise">...</div>
+    </div>
+    <div class="grid-item placeholder">
+        <div class="item-header">:: CAM_06 [OFFLINE] ::</div>
+        <div class="noise">...</div>
     </div>
 </div>
 </main>
 <footer>
-    <div style="margin-bottom:10px;">[ SYSTEM RESOURCES: 4 CATS | 2 DOGS | 1 RAT | 1 TURTLE ]</div>
-    <div class="footer-links">
-        <a href="https://x.com/Andrii_Ivas"><i class="fab fa-twitter"></i></a><a href="https://www.tumblr.com/andre-ivas"><i class="fab fa-tumblr"></i></a>
-        <a href="https://www.twitch.tv/ivas_andre"><i class="fab fa-twitch"></i></a><a href="https://github.com/ivas-andre"><i class="fab fa-github"></i></a>
-        <a href="https://open.spotify.com/user/ivas_andre"><i class="fab fa-spotify"></i></a>
+    <div class="zoo-list">[ ZOO: 4 CATS | 2 DOGS | 1 RAT | 1 TURTLE ]</div>
+    <div class="text-links">
+        <a href="https://www.youtube.com/@UkrGeekLife" target="_blank">YOUTUBE</a> | <a href="https://t.me/UkrGeekLife" target="_blank">TELEGRAM</a> | <a href="https://github.com/ivas-andre" target="_blank">GITHUB</a> | <a href="https://x.com/Andrii_Ivas" target="_blank">X</a>
     </div>
-    <div style="margin-top:10px;opacity:0.5;font-size:0.7rem;">© 2025 UkrGeekLife | Andrii Ivas | NO FORGIVENESS</div>
+    <div style="margin-top:10px;font-size:0.7rem;">© 2025 UkrGeekLife | Andrii Ivas | NO FORGIVENESS</div>
     </footer>
 <script src="js/main.js"></script>
 </body></html>

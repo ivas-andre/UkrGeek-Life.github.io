@@ -18,5 +18,5 @@ function draw() {
 setInterval(draw, 33);
 window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
-function killSystem() { document.body.innerHTML='<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:red;font-size:2rem;">SYSTEM HALTED</div>'; }
-function toggleMenu() { alert("Mobile Menu Active"); } // Simplified for stability
+function killSystem() { document.body.innerHTML='<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:red;font-size:3rem;font-family:monospace;">SYSTEM PURGED</div>'; }
+function toggleMenu() { document.querySelector('nav').classList.toggle('active'); }
