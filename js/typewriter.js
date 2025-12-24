@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     element.classList.add("cursor");
     element.style.visibility = "visible";
     let i = 0;
-    const speed = 10;
+    const speed = 15;
     function type() {
         if (i < text.length) {
             if (text.charAt(i) === '<') {
