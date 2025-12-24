@@ -32,16 +32,15 @@ footer {
 .irony { font-style: italic; color: #444; font-size: 0.8rem; }
 .zoo-counter { color: #004400; font-size: 0.8rem; letter-spacing: 1px; }
 
-/* EASTER EGG: Red glitch effect on hover */
+/* EASTER EGG */
 .hazard-zone { cursor: help; transition: 0.3s; }
 .hazard-zone:hover { color: #F00; text-shadow: 2px 2px 0px #FFF; content: "RM -RF /"; }
-.hazard-zone:hover::after { content: " [DO NOT TOUCH]"; font-size: 0.7rem; }
 
 /* Typing Cursor */
 .cursor::after { content: '█'; animation: blink 1s infinite; color: #0F0; margin-left: 5px; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-/* Terminal */
+/* Terminal Specifics */
 .terminal-window { background: #111; border: 1px solid #0F0; padding: 20px; height: 60vh; overflow-y: auto; }
 .input-line { display: flex; align-items: center; }
 .prompt { color: #0F0; margin-right: 10px; font-weight: bold; }

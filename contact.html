@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"> <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terminal | UkrGeekLife | Andrii Ivas</title>
@@ -17,7 +18,19 @@
 </header>
     <main class="container">
         <div id="typewriter-content">
-            <h1>Terminal Access</h1><div class='terminal-window'><div id='history'><p>UkrGeekLife OS v4.0 initialized...</p><p>Type 'help'...</p></div><div class='input-line'><span class='prompt'>guest@ukrgeek:~$</span><input type='text' id='cmd' autofocus></div></div>
+            
+        <h1>Terminal Access</h1>
+        <div class='terminal-window'>
+            <div id='history'>
+                <p>UkrGeekLife OS v4.1 initialized...</p>
+                <p>Type 'help' to verify privileges...</p>
+            </div>
+            <div class='input-line'>
+                <span class='prompt'>guest@ukrgeek:~$</span>
+                <input type='text' id='cmd' autofocus autocomplete="off">
+            </div>
+        </div>
+        
         </div>
     </main>
     
@@ -43,30 +56,6 @@
 </footer>
 
     <script src="js/matrix.js"></script>
-    <script>
-const input = document.getElementById("cmd");
-const history = document.getElementById("history");
-if(input) {
-    input.addEventListener("keydown", function(e) {
-        if (e.key === "Enter") {
-            const cmd = input.value.trim().toLowerCase();
-            history.innerHTML += `<div><span class="prompt">guest@ukrgeek:~$</span> ${input.value}</div>`;
-            let res = "";
-            switch(cmd) {
-                case "help": res = "COMMANDS: [about] [projects] [email] [slava] [clear]"; break;
-                case "about": res = "Andrii Ivas. Vegetarian. Patriot. Automation Architect."; break;
-                case "projects": res = "GitHub: ivas-andre. Automation. Security."; break;
-                case "slava": res = "<span style='color:yellow'>GEROYAM SLAVA!</span>"; break;
-                case "clear": history.innerHTML = ""; break;
-                default: res = "<span style='color:red'>Command not found.</span>";
-            }
-            if(cmd!=="clear") history.innerHTML += `<div style='margin-bottom:10px; color:#DDD'>${res}</div>`;
-            input.value = "";
-            document.querySelector('.terminal-window').scrollTop = document.querySelector('.terminal-window').scrollHeight;
-        }
-    });
-    document.addEventListener('click', () => input.focus());
-}
-</script>
+    <script src='js/terminal.js'></script>
 </body>
 </html>

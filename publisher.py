@@ -9,6 +9,8 @@ os.makedirs("css", exist_ok=True)
 os.makedirs("js", exist_ok=True)
 
 # 2. ASSETS
+
+# --- CSS ---
 CSS_CODE = """
 body { background-color: #000; color: #0F0; font-family: 'Courier New', monospace; margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column; }
 #matrix-bg { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15; }
@@ -43,16 +45,15 @@ footer {
 .irony { font-style: italic; color: #444; font-size: 0.8rem; }
 .zoo-counter { color: #004400; font-size: 0.8rem; letter-spacing: 1px; }
 
-/* EASTER EGG: Red glitch effect on hover */
+/* EASTER EGG */
 .hazard-zone { cursor: help; transition: 0.3s; }
 .hazard-zone:hover { color: #F00; text-shadow: 2px 2px 0px #FFF; content: "RM -RF /"; }
-.hazard-zone:hover::after { content: " [DO NOT TOUCH]"; font-size: 0.7rem; }
 
 /* Typing Cursor */
 .cursor::after { content: '█'; animation: blink 1s infinite; color: #0F0; margin-left: 5px; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-/* Terminal */
+/* Terminal Specifics */
 .terminal-window { background: #111; border: 1px solid #0F0; padding: 20px; height: 60vh; overflow-y: auto; }
 .input-line { display: flex; align-items: center; }
 .prompt { color: #0F0; margin-right: 10px; font-weight: bold; }
@@ -60,6 +61,7 @@ input#cmd { background: transparent; border: none; color: #FFF; font-family: mon
 #typewriter-content { visibility: hidden; }
 """
 
+# --- JS: MATRIX ---
 JS_MATRIX = """
 const canvas = document.getElementById('matrix-bg');
 const ctx = canvas.getContext('2d');
@@ -86,6 +88,7 @@ setInterval(draw, 33);
 window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 """
 
+# --- JS: TYPEWRITER ---
 JS_TYPEWRITER = """
 document.addEventListener("DOMContentLoaded", function() {
     const element = document.getElementById('typewriter-content');
@@ -110,35 +113,65 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 """
 
+# --- JS: TERMINAL (SEPARATED FILE) ---
 JS_TERMINAL = """
-const input = document.getElementById("cmd");
-const history = document.getElementById("history");
-if(input) {
-    input.addEventListener("keydown", function(e) {
-        if (e.key === "Enter") {
-            const cmd = input.value.trim().toLowerCase();
-            history.innerHTML += `<div><span class="prompt">guest@ukrgeek:~$</span> ${input.value}</div>`;
-            let res = "";
-            switch(cmd) {
-                case "help": res = "COMMANDS: [about] [projects] [email] [slava] [clear]"; break;
-                case "about": res = "Andrii Ivas. Vegetarian. Patriot. Automation Architect."; break;
-                case "projects": res = "GitHub: ivas-andre. Automation. Security."; break;
-                case "slava": res = "<span style='color:yellow'>GEROYAM SLAVA!</span>"; break;
-                case "clear": history.innerHTML = ""; break;
-                default: res = "<span style='color:red'>Command not found.</span>";
+document.addEventListener("DOMContentLoaded", function() {
+    const input = document.getElementById("cmd");
+    const history = document.getElementById("history");
+    
+    if(input) {
+        // Auto-focus on load
+        input.focus();
+        
+        // Always refocus when clicking anywhere
+        document.addEventListener('click', () => input.focus());
+
+        input.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                const cmd = input.value.trim().toLowerCase();
+                
+                // Echo command
+                history.innerHTML += `<div><span class="prompt">guest@ukrgeek:~$</span> ${input.value}</div>`;
+                
+                let res = "";
+                switch(cmd) {
+                    case "help": 
+                        res = "COMMANDS: [about] [projects] [email] [slava] [clear]"; 
+                        break;
+                    case "about": 
+                        res = "Andrii Ivas. Vegetarian. Patriot. Automation Architect."; 
+                        break;
+                    case "projects": 
+                        res = "GitHub: ivas-andre. Automation. Security."; 
+                        break;
+                    case "email":
+                        res = "Email: contact@ukrgeek.life";
+                        break;
+                    case "slava": 
+                        res = "<span style='color:yellow'>GEROYAM SLAVA! 🇺🇦</span>"; 
+                        break;
+                    case "clear": 
+                        history.innerHTML = ""; 
+                        break;
+                    default: 
+                        res = "<span style='color:red'>Error: Command not found. Try 'help'.</span>";
+                }
+                
+                if(cmd !== "clear") {
+                    history.innerHTML += `<div style='margin-bottom:10px; color:#DDD'>${res}</div>`;
+                }
+                
+                input.value = "";
+                // Auto-scroll to bottom
+                document.querySelector('.terminal-window').scrollTop = document.querySelector('.terminal-window').scrollHeight;
             }
-            if(cmd!=="clear") history.innerHTML += `<div style='margin-bottom:10px; color:#DDD'>${res}</div>`;
-            input.value = "";
-            document.querySelector('.terminal-window').scrollTop = document.querySelector('.terminal-window').scrollHeight;
-        }
-    });
-    document.addEventListener('click', () => input.focus());
-}
+        });
+    }
+});
 """
 
-# 3. TEMPLATES (ENGLISH UI ONLY)
+# 3. TEMPLATES (ENGLISH UI)
 
-# English Navigation
 NAV_MENU = """
 <nav role="navigation">
     <a href="index.html">[ HOME ]</a>
@@ -148,7 +181,6 @@ NAV_MENU = """
 </nav>
 """
 
-# The Brilliant Ironic Footer
 FOOTER_TEMPLATE = """
 <footer>
     <div class="footer-row">
@@ -172,9 +204,9 @@ FOOTER_TEMPLATE = """
 </footer>
 """
 
-# Base HTML Structure
 BASE_HTML = """<!DOCTYPE html>
-<html lang="en"> <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
@@ -194,7 +226,7 @@ BASE_HTML = """<!DOCTYPE html>
 </body>
 </html>"""
 
-# 4. CONTENT (MIXED LANGUAGE BODY - YOUR TEXT)
+# 4. CONTENT (MIXED LANGUAGE BODY)
 ABOUT_CONTENT = """
 <h1>The Protocol: No Gods, No Masters, No Forgiveness</h1>
 <p>Let’s be crystal clear. Я не буду підбирати слова, щоб комусь було "комфортно". Comfort is a lie. Реальність — це датасет, і він часто буває потворним.</p>
@@ -246,7 +278,7 @@ PAGES = {
         "title": f"Identity | {IDENTITY}", 
         "content": ABOUT_CONTENT, 
         "js": "",
-        "extra_js_file": "<script src='js/typewriter.js'></script>" # TYPING EFFECT ONLY HERE
+        "extra_js_file": "<script src='js/typewriter.js'></script>" # TYPEWRITER ONLY HERE
     },
     "projects.html": { 
         "title": f"Arsenal | {IDENTITY}", 
@@ -254,30 +286,48 @@ PAGES = {
         "js": "",
         "extra_js_file": "" 
     },
+    # FIXED: CONTACT PAGE NOW LINKS TO EXTERNAL FILE
     "contact.html": { 
         "title": f"Terminal | {IDENTITY}", 
-        "content": "<h1>Terminal Access</h1><div class='terminal-window'><div id='history'><p>UkrGeekLife OS v4.0 initialized...</p><p>Type 'help'...</p></div><div class='input-line'><span class='prompt'>guest@ukrgeek:~$</span><input type='text' id='cmd' autofocus></div></div>", 
-        "js": f"<script>{JS_TERMINAL}</script>",
-        "extra_js_file": "" 
+        "content": """
+        <h1>Terminal Access</h1>
+        <div class='terminal-window'>
+            <div id='history'>
+                <p>UkrGeekLife OS v4.1 initialized...</p>
+                <p>Type 'help' to verify privileges...</p>
+            </div>
+            <div class='input-line'>
+                <span class='prompt'>guest@ukrgeek:~$</span>
+                <input type='text' id='cmd' autofocus autocomplete="off">
+            </div>
+        </div>
+        """, 
+        "js": "",
+        "extra_js_file": "<script src='js/terminal.js'></script>" # LINK TO FILE, NOT INJECTION
     }
 }
 
 # 5. GENERATE
 def generate():
-    print("--- UPDATING SYSTEM: ENGLISH UI + MIXED CONTENT ---")
+    print("--- WRITING SYSTEM FILES ---")
+    
+    # Write CSS & JS assets to separate files
     with open("css/style.css", "w", encoding="utf-8") as f: f.write(CSS_CODE)
     with open("js/matrix.js", "w", encoding="utf-8") as f: f.write(JS_MATRIX)
     with open("js/typewriter.js", "w", encoding="utf-8") as f: f.write(JS_TYPEWRITER)
+    with open("js/terminal.js", "w", encoding="utf-8") as f: f.write(JS_TERMINAL)
     
+    print("✅ Assets Written (CSS, Matrix, Typewriter, Terminal)")
+
+    print("--- GENERATING PAGES ---")
     for filename, data in PAGES.items():
-        # Inject the correct extra JS (Typewriter only on About page)
         final_html = BASE_HTML.format(
             title=data['title'], 
             logo=IDENTITY, 
             nav=NAV_MENU, 
             content=data['content'], 
             footer=FOOTER_TEMPLATE.format(logo=IDENTITY), 
-            extra_js=data['js'] + data['extra_js_file']
+            extra_js=data['extra_js_file']
         )
         with open(filename, "w", encoding="utf-8") as f: f.write(final_html)
         print(f"✅ {filename} Generated")
