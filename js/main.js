@@ -1,5 +1,5 @@
 
-// 1. MATRIX BACKGROUND (UKRAINIAN)
+// 1. MATRIX BACKGROUND (UA)
 const canvas = document.getElementById('matrix-bg');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -24,12 +24,11 @@ function draw() {
 setInterval(draw, 33);
 window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
-// 2. WINDOW CONTROLS (THE RED BUTTON KILL SWITCH)
+// 2. KILL SWITCH
 function killSystem() {
     const overlay = document.getElementById('shutdown-overlay');
     overlay.style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    
     let seconds = 3;
     const timer = document.getElementById('shutdown-timer');
     const interval = setInterval(() => {
@@ -42,26 +41,17 @@ function killSystem() {
         }
     }, 1000);
 }
-
 function minimizeSystem() {
     document.querySelector('.container').style.opacity = '0.1';
-    document.querySelector('footer').style.opacity = '0.1';
-    alert("System running in background. Click OK to restore.");
+    alert("System minimized. Click OK.");
     document.querySelector('.container').style.opacity = '1';
-    document.querySelector('footer').style.opacity = '1';
 }
-
 function maximizeSystem() {
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        }
-    }
+    if (!document.fullscreenElement) { document.documentElement.requestFullscreen(); } 
+    else { if (document.exitFullscreen) { document.exitFullscreen(); } }
 }
 
-// 3. BURGER MENU TOGGLE
+// 3. BURGER MENU
 function toggleMenu() {
     const nav = document.querySelector('nav');
     const burger = document.querySelector('.burger-menu');
@@ -69,14 +59,16 @@ function toggleMenu() {
     burger.classList.toggle('active');
 }
 
-// 4. EASTER EGGS & FOOTER LOGIC
+// 4. VIDEO SWITCHER
+function changeVideo(id) {
+    const player = document.getElementById('main-player');
+    if(player) {
+        player.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+    }
+}
+
+// 5. FOOTER LOGIC
 document.addEventListener("DOMContentLoaded", function() {
-    // Fake IP in footer
     const ips = ["192.168.0.1 (Local)", "10.0.0.13 (Proxy)", "Trace Failed...", "SBU_Node_7"];
     document.getElementById('fake-ip').innerText = "Route: " + ips[Math.floor(Math.random() * ips.length)];
-    
-    // Console Egg
-    console.log("%c STOP! ", "color: red; font-size: 30px; font-weight: bold;");
-    console.log("%c If someone told you to paste code here, they are trying to hack your Zoo.", "color: white; font-size: 16px;");
-    console.log("Follow the white rabbit...");
 });

@@ -24,13 +24,21 @@
         <a href="index.html">/HOME</a>
         <a href="about.html">/IDENTITY</a>
         <a href="projects.html">/ARSENAL</a>
+        <a href="video.html">/VIDEO</a>
+        <a href="blog.html">/BLOG</a>
+        <a href="podcast.html">/PODCAST</a>
         <a href="contact.html">/TERMINAL</a>
     </nav>
 </header>
 
-    <main class="container"><div id="typewriter-content"><h1>Terminal Access</h1><div class='terminal-window'><div id='history'><p>UkrGeekLife OS v12.0 (Red Button Edition)...</p></div><div class='input-line'><span class='prompt'>root@ukrgeek:~#</span><input type='text' id='cmd' autofocus autocomplete='off' enterkeyhint='go'></div></div></div></main>
+    <main class="container"><div id="typewriter-content"><h1>Terminal Access</h1><div class='terminal-window'><div id='history'><p>UkrGeekLife OS v13.0 (Media Enabled)...</p></div><div class='input-line'><span class='prompt'>root@ukrgeek:~#</span><input type='text' id='cmd' autofocus autocomplete='off' enterkeyhint='go'></div></div></div></main>
     
 <footer>
+    <div class="external-links">
+        <a href="https://www.youtube.com/@UkrGeekLife" target="_blank">[ YOUTUBE ]</a>
+        <a href="https://t.me/UkrGeekLife" target="_blank">[ TELEGRAM ]</a>
+        <a href="https://github.com/ivas-andre" target="_blank">[ GITHUB ]</a>
+    </div>
     <div class="zoo-list" title="My support team">
         [ SYSTEM RESOURCES: 4 CATS | 2 DOGS | 1 RAT | 1 TURTLE | 100L WATER ]
     </div>
@@ -38,10 +46,7 @@
         &copy; 2025 UkrGeekLife | Andrii Ivas | NO FORGIVENESS
     </div>
     <div class="ip-trace" id="fake-ip">Trace pending...</div>
-    <div class="irony" style="font-size: 0.6rem; margin-top:10px; opacity: 0.5;">
-        "If you are looking for cookies, I ate them."
-    </div>
-    </footer>
+</footer>
 
     <script src="js/main.js"></script>
     
@@ -59,13 +64,15 @@
                     history.innerHTML += `<div><span class="prompt">root@ukrgeek:~#</span> ${rawCmd}</div>`;
                     let res = "";
                     switch(cmd) {
-                        case "help": res = "COMMANDS: [about] [projects] [email] [slava] [sudo rm -rf /]"; break;
+                        case "help": res = "COMMANDS: [about] [projects] [video] [blog] [email] [slava] [kill]"; break;
                         case "about": res = "Redirecting to Identity..."; setTimeout(()=>window.location='about.html', 1000); break;
                         case "projects": res = "Accessing Arsenal..."; setTimeout(()=>window.location='projects.html', 1000); break;
+                        case "video": res = "Loading Stream..."; setTimeout(()=>window.location='video.html', 1000); break;
+                        case "blog": res = "Reading Logs..."; setTimeout(()=>window.location='blog.html', 1000); break;
                         case "slava": res = "<span style='color:yellow; font-weight:bold;'>GEROYAM SLAVA! 🇺🇦</span>"; break;
                         case "russia": res = "<span style='color:red; font-weight:bold; font-size: 1.5em;'>FATAL ERROR: BIOWASTE DETECTED. PURGING...</span>"; break;
+                        case "kill": killSystem(); break;
                         case "clear": history.innerHTML = ""; break;
-                        case "sudo rm -rf /": res = "Nice try, kid. Permission Denied."; break;
                         case "": res = ""; break;
                         default: res = `<span style='color:red'>bash: ${rawCmd}: command not found</span>`;
                     }
