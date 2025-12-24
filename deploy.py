@@ -2,9 +2,13 @@
 import os, sys, subprocess, time, random
 
 # --- CONFIG ---
-IDENTITY = "UkrGeekLife | Andrii Ivas"
+# SPLIT IDENTITY CONSTANTS
+ID_PROJECT = "UkrGeekLife"
+ID_NAME = "Andrii Ivas"
+# RESTORED GLOBAL IDENTITY VARIABLE TO FIX ERROR
+IDENTITY = f"{ID_PROJECT} | {ID_NAME}"
+
 sys.stdout.reconfigure(encoding='utf-8')
-BUILD_ID = str(time.time()) # FORCE GIT TO SEE CHANGES
 
 LINKS = {
     "YOUTUBE": "https://www.youtube.com/@UkrGeekLife",
@@ -25,7 +29,7 @@ def run(cmd):
         subprocess.run(cmd, shell=True, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         print(f"✅ Executed: {cmd}")
     except:
-        pass # Ignore errors, just push forward
+        print(f"ℹ️ Git: Ready.")
 
 print("--- READING DATA ---")
 try:
@@ -34,6 +38,7 @@ except: BASE_ABOUT = "<h1>ERROR</h1><p>File missing.</p>"
 
 # --- HTML CONTENT ---
 
+# IDENTITY PAGE (HAL LINKS FIXED STYLE)
 ALIEN_DROPDOWN = """
 <div class="alien-container">
     <div class="alien-core">
@@ -62,10 +67,10 @@ HAL_LINKS = f"""
 """
 ABOUT_CONTENT = ALIEN_DROPDOWN + BASE_ABOUT + HAL_LINKS
 
-# PHOTO GRID (8 WIDGETS, 4 COLUMNS)
+# PHOTO GRID (4 COLUMNS FIXED)
 WIDGET_CODE = """
 <div class="widget-box">
-    <div class="widget-header">CAM_FEED: INSTAGRAM</div>
+    <div class="widget-header">CAM: INSTAGRAM</div>
     <div class="widget-content">
         <iframe src="https://snapwidget.com/embed/1115084" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; height:100%" title="Posts from Instagram"></iframe>
     </div>
@@ -73,20 +78,20 @@ WIDGET_CODE = """
 """
 PHOTO_CONTENT = f"""
 <h1>/GALLERY_GRID</h1>
-<p>Visual Database (8 Channels Connected).</p>
+<p>Visual Database (8 Channels).</p>
 <div class="photo-grid-container">
     {WIDGET_CODE}{WIDGET_CODE}{WIDGET_CODE}{WIDGET_CODE}
     {WIDGET_CODE}{WIDGET_CODE}{WIDGET_CODE}{WIDGET_CODE}
 </div>
 """
 
-# TERMINAL (FIXED INPUT)
+# TERMINAL (INPUT FIXED)
 CONTACT_CONTENT = """
 <h1>Terminal Access</h1>
 <div class='terminal-window'>
     <div id='history'>
-        <p>UkrGeekLife OS v23.0...</p>
-        <p>Type 'help' for commands.</p>
+        <p>UkrGeekLife OS v24.1 (Identity Fix)...</p>
+        <p>Type 'help'.</p>
     </div>
     <div class='input-line'>
         <span class='prompt'>root@ukrgeek:~#</span>
@@ -95,6 +100,7 @@ CONTACT_CONTENT = """
 </div>
 """
 
+# OTHER PAGES
 INDEX_CONTENT = """<h1>SYSTEM INDEX</h1><ul style="list-style:none;padding:0;"><li><strong>01. Engineer:</strong> Patriot.</li><li><strong>02. Hate:</strong> 500k dead.</li><li><strong>03. Vegetarian:</strong> 10+ years.</li><li><strong>04. Atheist:</strong> Logic only.</li><li><strong>05. Automation:</strong> Scripts.</li><li><strong>06. Python:</strong> Weapon.</li><li><strong>07. Void:</strong> Survivor.</li><li><strong>08. Zoo:</strong> My family.</li><li><strong>09. UX:</strong> Design.</li><li><strong>10. Open Source:</strong> Share.</li></ul>"""
 PROJECTS_CONTENT = """<h1>ARSENAL</h1><ul><li><strong>Growing Box:</strong> Hydroponics.</li><li><strong>Lighting:</strong> Spectrum.</li><li><strong>Global Box:</strong> Architecture.</li></ul><h2>SOCIAL</h2><ul><li><strong>Volunteer Cats:</strong> Helping animals.</li></ul>"""
 VIDEO_CONTENT = f"""<h1>/VIDEO_STREAM</h1><div class="video-wrapper"><iframe id="main-player" width="100%" height="450" src="https://www.youtube.com/embed/{VIDEO_ID}" frameborder="0" allowfullscreen></iframe></div>"""
@@ -106,12 +112,25 @@ CSS_CODE = """
 body { background-color: #050505; color: #0F0; font-family: 'Courier New', monospace; margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
 #matrix-bg { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15; }
 
-/* HEADER */
+/* HEADER - DIVIDED IDENTITY */
 header { background: #000; border-bottom: 2px solid #333; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-.identity-trigger { font-size: 1.1rem; font-weight: bold; color: #FFF; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; border: 1px solid transparent; padding: 5px 10px; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
-.identity-trigger:hover { color: #F00; border-color: #F00; text-shadow: 0 0 10px #F00; background: rgba(20, 0, 0, 0.8); }
+
+.identity-wrapper { display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: bold; color: #FFF; text-transform: uppercase; letter-spacing: 2px; }
+
+/* PART 1: UkrGeekLife (MENU TRIGGER) */
+.id-project { cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 5px; transition: 0.3s; border: 1px solid transparent; }
+.id-project:hover { color: #F00; text-shadow: 0 0 10px #F00; border-color: #F00; background: rgba(20,0,0,0.5); }
 .hal-mini-eye { width: 15px; height: 15px; background: #500; border-radius: 50%; box-shadow: 0 0 5px #F00; transition: 0.3s; }
-.identity-trigger:hover .hal-mini-eye { background: #F00; box-shadow: 0 0 15px #F00; }
+.id-project:hover .hal-mini-eye { background: #F00; box-shadow: 0 0 15px #F00; }
+
+/* DIVIDER */
+.id-divider { color: #333; }
+
+/* PART 2: Andrii Ivas (HOME LINK) */
+.id-name { text-decoration: none; color: #FFF; padding: 5px; transition: 0.3s; border: 1px solid transparent; }
+.id-name:hover { color: #0F0; text-shadow: 0 0 10px #0F0; border-color: #0F0; background: rgba(0,20,0,0.5); }
+
+/* SOCIAL ICONS */
 .header-social { display: flex; gap: 10px; }
 .social-icon { color: #555; font-size: 1.1rem; text-decoration: none; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border: 1px solid #222; background: #000; border-radius: 50%; transition: 0.3s; }
 .social-icon:hover { color: #FFF; border-color: #FFF; box-shadow: 0 0 10px #FFF; }
@@ -132,12 +151,22 @@ header { background: #000; border-bottom: 2px solid #333; padding: 15px 20px; di
 h1, h2 { border-bottom: 1px solid #0F0; color: #FFF; }
 .alert { border: 1px solid #F00; color: #F88; padding: 10px; }
 
-/* PHOTO GRID 4 COLS */
+/* --- FIX: PHOTO GRID 4 COLS + SQUARE ASPECT --- */
 .photo-grid-container { display: grid; gap: 15px; margin-top: 20px; }
+/* Desktop: 4 cols */
 @media (min-width: 1200px) { .photo-grid-container { grid-template-columns: repeat(4, 1fr); } }
+/* Laptop: 2 cols */
 @media (max-width: 1199px) and (min-width: 768px) { .photo-grid-container { grid-template-columns: repeat(2, 1fr); } }
+/* Mobile: 1 col */
 @media (max-width: 767px) { .photo-grid-container { grid-template-columns: 1fr; } }
-.widget-box { border: 1px solid #0F0; height: 400px; display: flex; flex-direction: column; background: #000; overflow: hidden; }
+
+.widget-box { 
+    border: 1px solid #0F0; 
+    background: #000; 
+    display: flex; flex-direction: column;
+    aspect-ratio: 1 / 1; /* Force Square */
+    overflow: hidden; 
+}
 .widget-header { background: #002200; color: #0F0; padding: 5px; font-size: 0.8rem; border-bottom: 1px solid #0F0; flex-shrink: 0; }
 .widget-content { flex: 1; overflow: hidden; position: relative; }
 .widget-content iframe { width: 100%; height: 100%; border: none; }
@@ -162,7 +191,7 @@ h1, h2 { border-bottom: 1px solid #0F0; color: #FFF; }
 .hal-btn:hover { border-color: #F00; color: #FFF; background: #000; }
 .hal-btn:hover .hal-eye { background: #F00; border-color: #FFF; box-shadow: 0 0 15px #F00; transform: scale(1.2); }
 
-/* TERMINAL INPUT FIX */
+/* TERMINAL FIX */
 .terminal-window { background: #111; border: 1px solid #0F0; padding: 15px; height: 50vh; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 1rem; text-align: left; }
 .input-line { display: flex; align-items: center; margin-top: 5px; }
 .prompt { color: #0F0; margin-right: 10px; font-weight: bold; white-space: nowrap; flex-shrink: 0; }
@@ -264,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function() {
 """
 
 # --- BUILD ---
-BASE_HTML = """<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>{title}</title>
+BASE_HTML = f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>{{title}}</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head><body><canvas id="matrix-bg"></canvas>
@@ -284,30 +313,35 @@ BASE_HTML = """<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta 
 </div>
 
 <header>
-    <div class="identity-trigger" onclick="toggleMenu()">
-        <div class="hal-mini-eye"></div>
-        <span>{id}</span>
+    <div class="identity-wrapper">
+        <div class="id-project" onclick="toggleMenu()">
+            <div class="hal-mini-eye"></div>
+            <span>{ID_PROJECT}</span>
+        </div>
+        <span class="id-divider">|</span>
+        <a href="index.html" class="id-name">{ID_NAME}</a>
     </div>
+
     <div class="header-social">
-        <a href="{yt}" class="social-icon"><i class="fab fa-youtube"></i></a>
-        <a href="{im}" class="social-icon"><i class="fab fa-instagram"></i></a>
-        <a href="{fb}" class="social-icon"><i class="fab fa-facebook"></i></a>
-        <a href="{li}" class="social-icon"><i class="fab fa-linkedin"></i></a>
+        <a href="{LINKS['YOUTUBE']}" class="social-icon"><i class="fab fa-youtube"></i></a>
+        <a href="{LINKS['INSTA_MAIN']}" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="{LINKS['FACEBOOK']}" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="{LINKS['LINKEDIN']}" class="social-icon"><i class="fab fa-linkedin"></i></a>
     </div>
 </header>
 
-<main class="container"><div id="typewriter-content">{content}</div></main>
+<main class="container"><div id="typewriter-content">{{content}}</div></main>
 
 <footer>
     <div style="margin-bottom:10px;">[ SYSTEM RESOURCES: 4 CATS | 2 DOGS | 1 RAT | 1 TURTLE ]</div>
     <div class="footer-links">
-        <a href="{x}"><i class="fab fa-twitter"></i></a><a href="{tu}"><i class="fab fa-tumblr"></i></a>
-        <a href="{tw}"><i class="fab fa-twitch"></i></a><a href="{gh}"><i class="fab fa-github"></i></a>
-        <a href="{sp}"><i class="fab fa-spotify"></i></a>
-        <a href="{ip}"><i class="fas fa-camera"></i></a>
+        <a href="{LINKS['X']}"><i class="fab fa-twitter"></i></a><a href="{LINKS['TUMBLR']}"><i class="fab fa-tumblr"></i></a>
+        <a href="{LINKS['TWITCH']}"><i class="fab fa-twitch"></i></a><a href="{LINKS['GITHUB']}"><i class="fab fa-github"></i></a>
+        <a href="{LINKS['SPOTIFY']}"><i class="fab fa-spotify"></i></a>
+        <a href="{LINKS['INSTA_PHOTO']}"><i class="fas fa-camera"></i></a>
     </div>
-    <div style="margin-top:10px;opacity:0.5;font-size:0.7rem;">© 2025 {id} | NO FORGIVENESS</div>
-    </footer>
+    <div style="margin-top:10px;opacity:0.5;font-size:0.7rem;">© 2025 {IDENTITY} | NO FORGIVENESS</div>
+</footer>
 <script src="js/main.js"></script>
 </body></html>"""
 
@@ -324,17 +358,13 @@ pages = {
 }
 
 for fname, content in pages.items():
-    html = BASE_HTML.format(
-        title=f"{fname} | {IDENTITY}", content=content, id=IDENTITY, rnd=BUILD_ID,
-        yt=LINKS['YOUTUBE'], im=LINKS['INSTA_MAIN'], fb=LINKS['FACEBOOK'], li=LINKS['LINKEDIN'],
-        x=LINKS['X'], tu=LINKS['TUMBLR'], tw=LINKS['TWITCH'], gh=LINKS['GITHUB'], sp=LINKS['SPOTIFY'], ip=LINKS['INSTA_PHOTO']
-    )
+    html = BASE_HTML.format(title=f"{fname} | {IDENTITY}", content=content)
     with open(fname, "w", encoding="utf-8") as f: f.write(html)
     print(f"✅ {fname}")
 
 print("--- DEPLOYING ---")
 time.sleep(1)
 run("git add .")
-run(f'git commit -m "UkrGeekLife | FINAL FIX | {time.strftime("%H:%M:%S")}"')
+run(f'git commit -m "UkrGeekLife | SPLIT IDENTITY & GRID FIX | {time.strftime("%H:%M:%S")}"')
 run("git push origin master")
 print(">>> DONE.")
