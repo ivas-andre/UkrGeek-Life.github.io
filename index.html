@@ -1,102 +1,31 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Home | UkrGeekLife | Andrii Ivas</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>index.html | UkrGeekLife | Andrii Ivas</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head><body>
-    <div id="preloader"><div style="text-align:center">INITIALIZING PROTOCOL<br><span style="font-size:0.8rem">LOADING MODULES...</span></div></div>
-    
-<div id="shutdown-overlay" class="shutdown-overlay">
-    <h1 style="color:red; font-size: 3rem;">SIGNAL LOST</h1>
-    <p id="shutdown-timer">TERMINATING SESSION...</p>
-</div>
-
-    <canvas id="matrix-bg"></canvas>
-    
+</head><body><canvas id="matrix-bg"></canvas>
 <header>
-    <div class="header-left">
-        <div class="window-controls">
-            <div class="dot red" onclick="killSystem()" title="Close Connection"></div>
-            <div class="dot yellow" onclick="minimizeSystem()" title="Minimize"></div>
-            <div class="dot green" onclick="maximizeSystem()" title="Fullscreen"></div>
-        </div>
-        <div class="window-title">root@ukrgeek:~</div>
-    </div>
+    <div style="display:flex; gap:10px;"><div class="dot red" style="width:12px;height:12px;background:#f55;border-radius:50%;cursor:pointer;" onclick="killSystem()"></div><span style="color:#888;font-weight:bold;">root@ukrgeek:~</span></div>
     <div class="header-social">
-        <a href="https://www.youtube.com/@UkrGeekLife" target="_blank" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.instagram.com/ivas_andrii/" target="_blank" class="social-icon" title="Instagram (Main)"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/Andrii.Ivas/" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.linkedin.com/in/ivas-andre/" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@UkrGeekLife" class="social-icon"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/ivas_andrii/" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/Andrii.Ivas/" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/ivas-andre/" class="social-icon"><i class="fab fa-linkedin"></i></a>
     </div>
-    <div style="display:flex; align-items:center;">
-        <nav>
-            <a href="index.html">/HOME</a>
-            <a href="about.html">/IDENTITY</a>
-            <a href="projects.html">/ARSENAL</a>
-            <a href="video.html">/VIDEO</a>
-            <a href="blog.html">/BLOG</a>
-            <a href="podcast.html">/PODCAST</a>
-            <a href="contact.html">/TERMINAL</a>
-        </nav>
-        <div class="burger-menu" onclick="toggleMenu()">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-    </div>
+    <nav>
+        <a href="index.html">/HOME</a><a href="about.html">/IDENTITY</a><a href="projects.html">/ARSENAL</a>
+        <a href="photo.html">/PHOTO</a><a href="video.html">/VIDEO</a><a href="blog.html">/BLOG</a>
+        <a href="contact.html">/TERMINAL</a>
+    </nav>
+    <div class="burger-menu" onclick="toggleMenu()">[MENU]</div>
 </header>
-
-    <main class="container"><div id="typewriter-content">
-<h1>SYSTEM INDEX: NAVIGATION & TRUTH</h1>
-<p>Welcome to <strong>UkrGeekLife</strong>. Тут немає води. Тут є факти.</p>
-<div class="alert"><strong>WARNING:</strong> High concentration of sarcasm and logic.</div>
-<ul style="list-style-type: none; padding: 0;">
-    <li style="margin-bottom: 10px;"><strong>01. Who The Fuck Am I:</strong> Engineer. Patriot. No bullshit allowed.</li>
-    <li style="margin-bottom: 10px;"><strong>02. Pure Hate:</strong> 500,000 dead Ukrainians. Why I hate Russia with pure logic.</li>
-    <li style="margin-bottom: 10px;"><strong>03. Vegetarian Protocol:</strong> 10+ років без трупів у тарілці.</li>
-    <li style="margin-bottom: 10px;"><strong>04. No Gods, No Masters:</strong> Атеїзм як інструмент. Релігія для слабких.</li>
-    <li style="margin-bottom: 10px;"><strong>05. Full Automation:</strong> Я лінивий, тому пишу скрипти. Manual work is for idiots.</li>
-    <li style="margin-bottom: 10px;"><strong>06. Python & PowerShell:</strong> Мій арсенал. Клікаєш більше 3 разів? Ти помилився.</li>
-    <li style="margin-bottom: 10px;"><strong>07. Mental Void:</strong> ADHD, OCD, Depression. Як не здохнути від власної голови.</li>
-    <li style="margin-bottom: 10px;"><strong>08. The Zoo:</strong> 4 cats, 2 dogs, rat, turtle. My real family.</li>
-    <li style="margin-bottom: 10px;"><strong>09. UX/UI Nazi:</strong> Usability is King. Bad design hurts physically.</li>
-    <li style="margin-bottom: 10px;"><strong>10. Open Source Cult:</strong> Stack Overflow — це база. Don't reinvent the wheel.</li>
-    <li style="margin-bottom: 10px;"><strong>11. Security Paranoia:</strong> Ваші паролі — гівно. Вас хакнуть.</li>
-    <li style="margin-bottom: 10px;"><strong>12. Old School Tech:</strong> Історія — це єдиний надійний бекап.</li>
-    <li style="margin-bottom: 10px;"><strong>13. Machine Learning:</strong> Це не "ШІ", це статистика. Вчіть матчастину.</li>
-    <li style="margin-bottom: 10px;"><strong>14. No Free Work:</strong> Pay me or leave me alone. Charity is over.</li>
-    <li style="margin-bottom: 10px;"><strong>15. Time Management:</strong> No meetings. Just tickets.</li>
-    <li style="margin-bottom: 10px;"><strong>16. Truth Only:</strong> Я не згладжую кути. Truth hurts? Good.</li>
-    <li style="margin-bottom: 10px;"><strong>17. Hardware Fetish:</strong> EliteBook reliability > Apple hype.</li>
-    <li style="margin-bottom: 10px;"><strong>18. Digital Hygiene:</strong> Clean your disk, clean your mind.</li>
-    <li style="margin-bottom: 10px;"><strong>19. My Boundaries:</strong> Заміновані. Don't step.</li>
-    <li style="margin-bottom: 10px;"><strong>20. Survival Guide:</strong> Як жити під час війни і залишатися людиною.</li>
-</ul>
-</div></main>
-    
+<main class="container"><h1>SYSTEM INDEX</h1><p>Welcome to <strong>UkrGeekLife</strong>.</p><ul style="list-style:none;padding:0;"><li><strong>01. Who The Fuck Am I:</strong> Engineer. Patriot.</li><li><strong>02. Pure Hate:</strong> 500k dead. No mercy.</li><li><strong>03. Vegetarian:</strong> 10+ years.</li><li><strong>04. No Gods:</strong> Atheist protocol.</li><li><strong>05. Automation:</strong> Scripts > Humans.</li><li><strong>06. Python:</strong> My weapon.</li><li><strong>07. Void:</strong> ADHD/OCD Survivor.</li><li><strong>08. Zoo:</strong> 4 cats, 2 dogs.</li><li><strong>09. UX Nazi:</strong> Design matters.</li><li><strong>10. Open Source:</strong> Share knowledge.</li></ul></main>
 <footer>
-    <div class="zoo-list" title="My support team">
-        [ SYSTEM RESOURCES: 4 CATS | 2 DOGS | 1 RAT | 1 TURTLE | 100L WATER ]
+    <div style="margin-bottom:10px;">[ SYSTEM RESOURCES: 4 CATS | 2 DOGS | 1 RAT | 1 TURTLE ]</div>
+    <div class="footer-links">
+        <a href="https://x.com/Andrii_Ivas"><i class="fab fa-twitter"></i></a><a href="https://www.tumblr.com/andre-ivas"><i class="fab fa-tumblr"></i></a>
+        <a href="https://www.twitch.tv/ivas_andre"><i class="fab fa-twitch"></i></a><a href="https://github.com/ivas-andre"><i class="fab fa-github"></i></a>
+        <a href="https://open.spotify.com/user/ivas_andre"><i class="fab fa-spotify"></i></a>
     </div>
-    <div class="footer-bottom" style="margin: 15px 0;">
-        <a href="https://x.com/Andrii_Ivas" target="_blank" class="footer-icon-link" title="X"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.tumblr.com/andre-ivas" target="_blank" class="footer-icon-link" title="Tumblr"><i class="fab fa-tumblr"></i></a>
-        <a href="https://www.twitch.tv/ivas_andre" target="_blank" class="footer-icon-link" title="Twitch"><i class="fab fa-twitch"></i></a>
-        <a href="https://github.com/ivas-andre" target="_blank" class="footer-icon-link" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/andrii_photographer/" target="_blank" class="footer-icon-link" title="Photo Instagram"><i class="fas fa-camera"></i></a>
-        <a href="https://open.spotify.com/playlist/1BG0k1dDJN14PczoyvSD6T?si=JVz8SvIGQHeba0XCCsulzQ" target="_blank" class="footer-icon-link" title="Spotify"><i class="fab fa-spotify"></i></a>
-    </div>
-    <div class="footer-bottom">
-        <span class="ip-trace" id="fake-ip">Trace...</span>
-        <span>::</span>
-        <span class="uptime" id="uptime-counter">UPTIME: 0s</span>
-    </div>
-    <div style="margin-top: 15px; opacity: 0.5; font-size: 0.7rem;">© 2025 UkrGeekLife | Andrii Ivas | NO FORGIVENESS</div>
+    <div style="margin-top:10px;opacity:0.5;font-size:0.7rem;">© 2025 UkrGeekLife | Andrii Ivas | NO FORGIVENESS</div>
     </footer>
-
-    <script src="js/main.js"></script>
-    <script src='js/typewriter.js'></script>
-    <script>
-        window.addEventListener('load', () => {
-            setTimeout(() => { document.getElementById('preloader').classList.add('loaded'); }, 1500);
-        });
-    </script>
+<script src="js/main.js"></script>
 </body></html>
